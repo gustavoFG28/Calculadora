@@ -17,16 +17,21 @@ namespace apCalculadora
         string sequenciaPosFixa;
         PilhaHerdaLista<double> valores;
         PilhaHerdaLista<char> operadores;
+        double resultado;
+
         public frmCalculadora()
         {
             InitializeComponent();
         }
+
         private void frmCalculadora_Load(object sender, EventArgs e)
         {
             sequenciaPosFixa = "";
             valores = new PilhaHerdaLista<double>();
             operadores = new PilhaHerdaLista<char>();
             precedencia = new bool[100, 100];
+            IniciarMatrizPrecedencia();
+            resultado = 0.0;
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -37,23 +42,65 @@ namespace apCalculadora
         private void btn5_Click(object sender, EventArgs e)
         {
             Button qualBotao = (Button)sender;
-            txtVisor.Text += qualBotao.Text;
+            if(EhOperando(qualBotao.Text[0]))
+            {
+                txtVisor.Text += qualBotao.Text;
+            }
+            else
+            {
+                char ultimoCaracter = txtVisor.Text[txtVisor.Text.Length - 1];
+               
+                if (EhOperando(ultimoCaracter) || qualBotao.Text == "(" && qualBotao.Text != ")" )
+                    txtVisor.Text += qualBotao.Text;
+          
+            }
         }
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
             string sequenciaInfixa = txtVisor.Text;
+           
             foreach(char character in sequenciaInfixa)
-            {
-                QualCharacter(character, ref sequenciaPosFixa);
-            }
-            
+                TratarCaracter(character, ref sequenciaPosFixa);
+
+            TratarPilhaOperadores();
+
+            Calcular();
+
             lbSequencia.Text = sequenciaPosFixa;
+            txtResultado.Text = resultado + "";
         }
         
-        void QualCharacter(char c, ref string seq)
+        private void TratarCaracter(char c, ref string seq)
         {
-            switch(c)
+            if (EhOperando(c))
+                seq += c;
+            else
+            {
+                if (operadores.EstaVazia() || !TemPrecedencia(operadores.OTopo(), c))
+                    operadores.Empilhar(c);
+                else
+                    seq += operadores.Desempilhar();
+            }
+        }
+
+        private void TratarPilhaOperadores()
+        {
+            while(!operadores.EstaVazia())
+            {
+                sequenciaPosFixa += operadores.Desempilhar();
+            }
+        }
+
+        private bool TemPrecedencia(char a, char b)
+        {
+            return precedencia[a, b];
+        }
+        
+
+        private bool EhOperando(char qual)
+        {
+            switch(qual)
             {
                 case '0':
                 case '1':
@@ -64,24 +111,28 @@ namespace apCalculadora
                 case '6':
                 case '7':
                 case '8':
-                case '9': seq += c; break;
-
-                default: operadores.Empilhar(c); TratarOperador(c); break;
+                case '9': return true; break;
             }
+            return false;
         }
 
-        void TratarOperador(char c)
+        private void IniciarMatrizPrecedencia()
         {
-            while(!operadores.EstaVazia() && TemPrecedencia(operadores.OTopo(), c))
-            {
+            precedencia['+', '+'] = true;
+            precedencia['+', '-'] = true;
+            precedencia['-', '+'] = true;
+            precedencia['-', '-'] = true;
+            precedencia['+', '*'] = false;
+            precedencia['*', '+'] = true;
 
-            }
         }
 
-        bool TemPrecedencia(char topo, char qual)
+        private void Calcular()
         {
-            
-            return true;
+            PilhaHerdaLista<double> resultado = new PilhaHerdaLista<double>();
+            double v1 = 0, v2 = 0;
         }
+        
+
     }
 }
