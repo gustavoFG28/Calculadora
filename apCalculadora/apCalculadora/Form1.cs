@@ -82,9 +82,11 @@ namespace apCalculadora
         private void btnIgual_Click(object sender, EventArgs e)
         {
             string sequenciaInfixa = txtVisor.Text;
-           
-            foreach(char character in sequenciaInfixa)
-                TratarCaracter(character, ref sequenciaPosFixa);
+            foreach (char character in sequenciaInfixa)
+            {
+                    TratarCaracter(character, ref sequenciaPosFixa);    
+                
+            }
 
             TratarPilhaOperadores();
 
@@ -96,20 +98,31 @@ namespace apCalculadora
         
         private void TratarCaracter(char c, ref string seq)
         {
+           
             if (EhOperando(c))
                 seq += c;
             else
             {
-                if (operadores.EstaVazia() || !TemPrecedencia(operadores.OTopo(), c))
-                    operadores.Empilhar(c);
-                else
-                    seq += operadores.Desempilhar();
+                if (operadores.EstaVazia())
+                        operadores.Empilhar(c);
+                    else
+                        if(TemPrecedencia(c,operadores.OTopo()))
+                        {
+                            operadores.Empilhar(c);
+                        }
+                        else
+                        {
+                            seq += operadores.Desempilhar();
+                           TratarCaracter(c, ref seq);
+                        }
+                        
+                    
             }
         }
 
         private void TratarPilhaOperadores()
         {
-            while(!operadores.EstaVazia())
+            if(!operadores.EstaVazia())
             {
                 sequenciaPosFixa += operadores.Desempilhar();
             }
