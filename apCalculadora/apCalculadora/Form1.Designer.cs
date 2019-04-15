@@ -64,6 +64,7 @@
             // 
             // btn7
             // 
+            this.btn7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn7.Location = new System.Drawing.Point(21, 90);
             this.btn7.Name = "btn7";
             this.btn7.Size = new System.Drawing.Size(69, 54);
@@ -74,6 +75,7 @@
             // 
             // btn4
             // 
+            this.btn4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn4.Location = new System.Drawing.Point(21, 150);
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(69, 54);
@@ -84,6 +86,7 @@
             // 
             // btn1
             // 
+            this.btn1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn1.Location = new System.Drawing.Point(21, 210);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(69, 54);
@@ -94,6 +97,7 @@
             // 
             // btn0
             // 
+            this.btn0.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn0.Location = new System.Drawing.Point(21, 270);
             this.btn0.Name = "btn0";
             this.btn0.Size = new System.Drawing.Size(69, 54);
@@ -104,6 +108,7 @@
             // 
             // btn8
             // 
+            this.btn8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn8.Location = new System.Drawing.Point(96, 90);
             this.btn8.Name = "btn8";
             this.btn8.Size = new System.Drawing.Size(69, 54);
@@ -114,6 +119,7 @@
             // 
             // btnPonto
             // 
+            this.btnPonto.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPonto.Location = new System.Drawing.Point(96, 270);
             this.btnPonto.Name = "btnPonto";
             this.btnPonto.Size = new System.Drawing.Size(69, 54);
@@ -124,6 +130,7 @@
             // 
             // btn2
             // 
+            this.btn2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn2.Location = new System.Drawing.Point(96, 210);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(69, 54);
@@ -134,6 +141,7 @@
             // 
             // btn5
             // 
+            this.btn5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn5.Location = new System.Drawing.Point(96, 150);
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(69, 54);
@@ -144,6 +152,7 @@
             // 
             // btnPotenciacao
             // 
+            this.btnPotenciacao.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPotenciacao.Location = new System.Drawing.Point(246, 210);
             this.btnPotenciacao.Name = "btnPotenciacao";
             this.btnPotenciacao.Size = new System.Drawing.Size(69, 54);
@@ -154,6 +163,7 @@
             // 
             // btn3
             // 
+            this.btn3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn3.Location = new System.Drawing.Point(171, 210);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(69, 54);
@@ -164,6 +174,7 @@
             // 
             // btn6
             // 
+            this.btn6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn6.Location = new System.Drawing.Point(171, 150);
             this.btn6.Name = "btn6";
             this.btn6.Size = new System.Drawing.Size(69, 54);
@@ -174,6 +185,7 @@
             // 
             // btn9
             // 
+            this.btn9.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn9.Location = new System.Drawing.Point(171, 90);
             this.btn9.Name = "btn9";
             this.btn9.Size = new System.Drawing.Size(69, 54);
@@ -184,6 +196,7 @@
             // 
             // btnDivisao
             // 
+            this.btnDivisao.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDivisao.Location = new System.Drawing.Point(321, 90);
             this.btnDivisao.Name = "btnDivisao";
             this.btnDivisao.Size = new System.Drawing.Size(69, 54);
@@ -194,6 +207,7 @@
             // 
             // btnMultiplicacao
             // 
+            this.btnMultiplicacao.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMultiplicacao.Location = new System.Drawing.Point(321, 150);
             this.btnMultiplicacao.Name = "btnMultiplicacao";
             this.btnMultiplicacao.Size = new System.Drawing.Size(69, 54);
@@ -204,6 +218,7 @@
             // 
             // btnSubtracao
             // 
+            this.btnSubtracao.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubtracao.Location = new System.Drawing.Point(246, 150);
             this.btnSubtracao.Name = "btnSubtracao";
             this.btnSubtracao.Size = new System.Drawing.Size(69, 54);
@@ -214,6 +229,7 @@
             // 
             // btnAdicao
             // 
+            this.btnAdicao.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicao.Location = new System.Drawing.Point(246, 90);
             this.btnAdicao.Name = "btnAdicao";
             this.btnAdicao.Size = new System.Drawing.Size(69, 54);
@@ -240,6 +256,7 @@
             // 
             // btnRadiciacao
             // 
+            this.btnRadiciacao.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRadiciacao.Location = new System.Drawing.Point(321, 210);
             this.btnRadiciacao.Name = "btnRadiciacao";
             this.btnRadiciacao.Size = new System.Drawing.Size(69, 54);
@@ -250,6 +267,7 @@
             // 
             // btnLimpar
             // 
+            this.btnLimpar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpar.Location = new System.Drawing.Point(171, 270);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(69, 54);
@@ -260,6 +278,7 @@
             // 
             // btnIgual
             // 
+            this.btnIgual.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIgual.Location = new System.Drawing.Point(96, 330);
             this.btnIgual.Name = "btnIgual";
             this.btnIgual.Size = new System.Drawing.Size(219, 54);
@@ -270,6 +289,7 @@
             // 
             // btnAbreParenteses
             // 
+            this.btnAbreParenteses.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAbreParenteses.Location = new System.Drawing.Point(246, 270);
             this.btnAbreParenteses.Name = "btnAbreParenteses";
             this.btnAbreParenteses.Size = new System.Drawing.Size(69, 54);
@@ -280,6 +300,7 @@
             // 
             // btnFechaParenteses
             // 
+            this.btnFechaParenteses.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFechaParenteses.Location = new System.Drawing.Point(321, 270);
             this.btnFechaParenteses.Name = "btnFechaParenteses";
             this.btnFechaParenteses.Size = new System.Drawing.Size(69, 54);

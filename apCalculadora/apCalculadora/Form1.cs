@@ -37,6 +37,8 @@ namespace apCalculadora
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             txtVisor.Clear();
+            lbSequencia.Text = "";
+            txtResultado.Clear();
         }
 
         private void btn5_Click(object sender, EventArgs e)
@@ -48,11 +50,32 @@ namespace apCalculadora
             }
             else
             {
-                char ultimoCaracter = txtVisor.Text[txtVisor.Text.Length - 1];
-               
-                if (EhOperando(ultimoCaracter) || qualBotao.Text == "(" && qualBotao.Text != ")" )
+                char ultimoCaracter = ' ';
+                if (txtVisor.Text.Length > 0)
+                {
+                    ultimoCaracter = txtVisor.Text[txtVisor.Text.Length - 1];
+
+                    if (EhOperando(ultimoCaracter))
+                    {
+                            txtVisor.Text += qualBotao.Text;
+                    }
+                    else
+                    {
+                        if (qualBotao.Text == "(")
+                            txtVisor.Text += qualBotao.Text;
+
+                        if(ultimoCaracter == ')')
+                        {
+                            if(qualBotao.Text!= "(")
+                                txtVisor.Text += qualBotao.Text;
+                        }
+                    }
+                }
+                else
+                    if (qualBotao.Text == "(")
                     txtVisor.Text += qualBotao.Text;
-          
+
+
             }
         }
 
