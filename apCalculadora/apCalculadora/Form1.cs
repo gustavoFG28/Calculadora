@@ -39,6 +39,7 @@ namespace apCalculadora
             txtVisor.Clear();
             lbSequencia.Text = "";
             txtResultado.Clear();
+            sequenciaPosFixa = "";
         }
 
         private void btn5_Click(object sender, EventArgs e)
@@ -100,29 +101,35 @@ namespace apCalculadora
         {
            
             if (EhOperando(c))
+            {
+                valores.InserirAntesDoInicio(c);
                 seq += c;
+            }
+                
             else
             {
                 if (operadores.EstaVazia())
                         operadores.Empilhar(c);
                     else
-                        if(TemPrecedencia(c,operadores.OTopo()))
+                        if(TemPrecedencia(operadores.OTopo(), c))
                         {
-                            operadores.Empilhar(c);
+                            seq += operadores.Desempilhar();
+                            TratarCaracter(c, ref seq);
                         }
                         else
                         {
-                            seq += operadores.Desempilhar();
-                           TratarCaracter(c, ref seq);
+                            operadores.Empilhar(c);
                         }
-                        
-                    
+
+                // 6 + 9 * 5
+                // 695*+
+                   //69 5  +*
             }
         }
 
         private void TratarPilhaOperadores()
         {
-            if(!operadores.EstaVazia())
+            while(!operadores.EstaVazia())
             {
                 sequenciaPosFixa += operadores.Desempilhar();
             }
@@ -156,11 +163,40 @@ namespace apCalculadora
         {
             precedencia['+', '+'] = true;
             precedencia['+', '-'] = true;
+            precedencia['+', '*'] = false;
+            precedencia['+', '/'] = false;
+            precedencia['+', '^'] = false;
+            precedencia['+', 'V'] = false;
             precedencia['-', '+'] = true;
             precedencia['-', '-'] = true;
-            precedencia['+', '*'] = false;
+            precedencia['-', '*'] = false;
+            precedencia['-', '/'] = false;
+            precedencia['-', '^'] = false;
+            precedencia['-', 'V'] = false;
             precedencia['*', '+'] = true;
-
+            precedencia['*', '-'] = true;
+            precedencia['*', '*'] = true;
+            precedencia['*', '/'] = true;
+            precedencia['*', '^'] = false;
+            precedencia['*', 'V'] = false;
+            precedencia['/', '+'] = true;
+            precedencia['/', '-'] = true;
+            precedencia['/', '*'] = true;
+            precedencia['/', '/'] = true;
+            precedencia['/', '^'] = false;
+            precedencia['/', 'V'] = false;
+            precedencia['^', '+'] = true;
+            precedencia['^', '-'] = true;
+            precedencia['^', '*'] = true;
+            precedencia['^', '/'] = true;
+            precedencia['^', '^'] = true;
+            precedencia['^', 'V'] = true;
+            precedencia['V', '+'] = true;
+            precedencia['V', '-'] = true;
+            precedencia['V', '*'] = true;
+            precedencia['V', '/'] = true;
+            precedencia['V', '^'] = true;
+            precedencia['V', 'V'] = true;
         }
 
         private void Calcular()
