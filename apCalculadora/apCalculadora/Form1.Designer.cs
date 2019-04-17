@@ -241,10 +241,10 @@
             // 
             // txtResultado
             // 
-            this.txtResultado.Enabled = false;
             this.txtResultado.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtResultado.Location = new System.Drawing.Point(21, 49);
             this.txtResultado.Name = "txtResultado";
+            this.txtResultado.ReadOnly = true;
             this.txtResultado.Size = new System.Drawing.Size(369, 33);
             this.txtResultado.TabIndex = 17;
             // 

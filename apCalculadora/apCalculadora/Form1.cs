@@ -120,10 +120,6 @@ namespace apCalculadora
                         {
                             operadores.Empilhar(c);
                         }
-
-                // 6 + 9 * 5
-                // 695*+
-                   //69 5  +*
             }
         }
 
@@ -143,20 +139,7 @@ namespace apCalculadora
 
         private bool EhOperando(char qual)
         {
-            switch(qual)
-            {
-                case '0':
-                case '1':
-                case '2':
-                case '3':
-                case '4':
-                case '5':
-                case '6':
-                case '7':
-                case '8':
-                case '9': return true; break;
-            }
-            return false;
+            return qual >= '0' && qual <= '9';
         }
 
         private void IniciarMatrizPrecedencia()
@@ -201,10 +184,31 @@ namespace apCalculadora
 
         private void Calcular()
         {
-            PilhaHerdaLista<double> resultado = new PilhaHerdaLista<double>();
-            double v1 = 0, v2 = 0;
-        }
-        
+            double v1 = 0, v2 = 0, result = 0;
+            foreach (char c in sequenciaPosFixa)
+            {
+                if (EhOperando(c))
+                {
+                    valores.Empilhar(double.Parse(c + ""));
+                }
+                else
+                {
+                    v1 = valores.Desempilhar();
+                    v2 = valores.Desempilhar();
+                    switch (c)
+                    {
+                        case '+': result = v2 + v1; break;
+                        case '-': result = v2 - v1; break;
+                        case '*': result = v2 * v1; break;
+                        case '/': result = v2 / v1; break;
+                        case '^': result = Math.Pow(v2, v1); break;
+                        case 'V': result = Math.Pow(v2, 1 / v1); break;
+                    }
+                    valores.Empilhar(result);
+                }
+            }
 
+            this.resultado = valores.Desempilhar();
+        }
     }
 }
