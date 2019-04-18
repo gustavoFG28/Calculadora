@@ -62,6 +62,8 @@
             this.txtVisor.ReadOnly = true;
             this.txtVisor.Size = new System.Drawing.Size(369, 31);
             this.txtVisor.TabIndex = 0;
+            this.txtVisor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtVisor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btn7
             // 
@@ -73,6 +75,7 @@
             this.btn7.Text = "7";
             this.btn7.UseVisualStyleBackColor = true;
             this.btn7.Click += new System.EventHandler(this.btn5_Click);
+            this.btn7.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn7_KeyDown);
             // 
             // btn4
             // 
@@ -247,6 +250,7 @@
             this.txtResultado.ReadOnly = true;
             this.txtResultado.Size = new System.Drawing.Size(369, 33);
             this.txtResultado.TabIndex = 17;
+            this.txtResultado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbSequencia
             // 
@@ -344,6 +348,7 @@
             this.Name = "frmCalculadora";
             this.Text = "Calculadora";
             this.Load += new System.EventHandler(this.frmCalculadora_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCalculadora_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

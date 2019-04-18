@@ -13,12 +13,12 @@ namespace apCalculadora
     public partial class frmCalculadora : Form
     {
         bool[,] precedencia;
-        bool MatrizPrecedencia;
         string sequenciaPosFixa;
+        string[] aaaa;
         PilhaHerdaLista<double> valores;
         PilhaHerdaLista<char> operadores;
         double resultado;
-
+        int cont = 0;
         public frmCalculadora()
         {
             InitializeComponent();
@@ -29,6 +29,7 @@ namespace apCalculadora
             sequenciaPosFixa = "";
             valores = new PilhaHerdaLista<double>();
             operadores = new PilhaHerdaLista<char>();
+            
             precedencia = new bool[100, 100];
             IniciarMatrizPrecedencia();
             resultado = 0.0;
@@ -40,6 +41,11 @@ namespace apCalculadora
             lbSequencia.Text = "";
             txtResultado.Clear();
             sequenciaPosFixa = "";
+            aaaa = new string[100];
+            valores = new PilhaHerdaLista<double>();
+            operadores = new PilhaHerdaLista<char>();
+            cont = 0;
+            resultado = 0;
         }
 
         private void btn5_Click(object sender, EventArgs e)
@@ -82,11 +88,24 @@ namespace apCalculadora
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
+            aaaa = new string[100];
             string sequenciaInfixa = txtVisor.Text;
-            foreach (char character in sequenciaInfixa)
+            for(int i = 0; i < sequenciaInfixa.Length; i++)
             {
-                    TratarCaracter(character, ref sequenciaPosFixa);    
-                
+                string elemento = "";
+
+                if (EhOperando(sequenciaInfixa[i]))
+                {
+                    elemento = "";
+                    int inicial = i;
+                    while (inicial + elemento.Length < sequenciaInfixa.Length && (EhOperando(sequenciaInfixa[inicial + elemento.Length]) || sequenciaInfixa[inicial + elemento.Length] == '.'))
+                        elemento += sequenciaInfixa[inicial + elemento.Length];
+                    i = inicial + elemento.Length - 1;
+                }
+                else
+                    elemento = sequenciaInfixa[i] + "";
+
+                TratarElemento(elemento, ref sequenciaPosFixa);
             }
 
             TratarPilhaOperadores();
@@ -96,30 +115,48 @@ namespace apCalculadora
             lbSequencia.Text = sequenciaPosFixa;
             txtResultado.Text = resultado + "";
         }
-        
-        private void TratarCaracter(char c, ref string seq)
+
+        private void TratarElemento(string c, ref string seq)
         {
-           
-            if (EhOperando(c))
+
+            if (!EhOperador(c))
             {
-                valores.InserirAntesDoInicio(c);
+                aaaa[cont++] = c;
                 seq += c;
+
             }
-                
             else
             {
+                char operador = c[0];
                 if (operadores.EstaVazia())
-                        operadores.Empilhar(c);
-                    else
-                        if(TemPrecedencia(operadores.OTopo(), c))
+                    operadores.Empilhar(operador);
+                else
+                {
+                    do
+                    {
+                        if (TemPrecedencia(operadores.OTopo(), operador))
                         {
-                            seq += operadores.Desempilhar();
-                            TratarCaracter(c, ref seq);
+                            char op = operadores.Desempilhar();
+                            if (op != '(' && op != ')')
+                            {
+                                seq += op;
+                                aaaa[cont++] = op + "";
+                            }
+
+                            if(operadores.EstaVazia())
+                            {
+                                operadores.Empilhar(operador);
+                                break;
+                            }
                         }
                         else
                         {
-                            operadores.Empilhar(c);
+                            operadores.Empilhar(operador);
+                            break;
                         }
+                    }
+                    while (!operadores.EstaVazia());
+                }
             }
         }
 
@@ -127,15 +164,40 @@ namespace apCalculadora
         {
             while(!operadores.EstaVazia())
             {
-                sequenciaPosFixa += operadores.Desempilhar();
+                char op = operadores.Desempilhar();
+                if (op != '(' && op != ')')
+                {
+                    aaaa[cont++] = op + "";
+                    sequenciaPosFixa += op;
+                }
             }
         }
 
         private bool TemPrecedencia(char a, char b)
         {
+            if (a == ')')
+                return false;
+
             return precedencia[a, b];
         }
         
+
+        private bool EhOperador(string qual)
+        {
+            switch(qual)
+            {
+                case "+":
+                case "-":
+                case "*":
+                case "/":
+                case "^":
+                case "V":
+                case "(":
+                case ")": return true;
+
+                default: return false;
+            }
+        }
 
         private bool EhOperando(char qual)
         {
@@ -150,65 +212,148 @@ namespace apCalculadora
             precedencia['+', '/'] = false;
             precedencia['+', '^'] = false;
             precedencia['+', 'V'] = false;
+            precedencia['+', '('] = false;
+            precedencia['+', ')'] = true;
             precedencia['-', '+'] = true;
             precedencia['-', '-'] = true;
             precedencia['-', '*'] = false;
             precedencia['-', '/'] = false;
             precedencia['-', '^'] = false;
             precedencia['-', 'V'] = false;
+            precedencia['-', '('] = false;
+            precedencia['-', ')'] = true;
             precedencia['*', '+'] = true;
             precedencia['*', '-'] = true;
             precedencia['*', '*'] = true;
             precedencia['*', '/'] = true;
             precedencia['*', '^'] = false;
             precedencia['*', 'V'] = false;
+            precedencia['*', '('] = false;
+            precedencia['*', ')'] = true;
             precedencia['/', '+'] = true;
             precedencia['/', '-'] = true;
             precedencia['/', '*'] = true;
             precedencia['/', '/'] = true;
             precedencia['/', '^'] = false;
             precedencia['/', 'V'] = false;
+            precedencia['/', '('] = false;
+            precedencia['/', ')'] = true;
             precedencia['^', '+'] = true;
             precedencia['^', '-'] = true;
             precedencia['^', '*'] = true;
             precedencia['^', '/'] = true;
             precedencia['^', '^'] = true;
             precedencia['^', 'V'] = true;
+            precedencia['^', '('] = false;
+            precedencia['^', ')'] = true;
             precedencia['V', '+'] = true;
             precedencia['V', '-'] = true;
             precedencia['V', '*'] = true;
             precedencia['V', '/'] = true;
             precedencia['V', '^'] = true;
             precedencia['V', 'V'] = true;
+            precedencia['V', '('] = false;
+            precedencia['V', ')'] = true;
+            precedencia['(', '+'] = false;
+            precedencia['(', '-'] = false;
+            precedencia['(', '*'] = false;
+            precedencia['(', '/'] = false;
+            precedencia['(', '^'] = false;
+            precedencia['(', 'V'] = false;
+            precedencia['(', '('] = false;
+            precedencia['(', ')'] = true;
+
+           
         }
 
         private void Calcular()
         {
             double v1 = 0, v2 = 0, result = 0;
-            foreach (char c in sequenciaPosFixa)
+            for (int c = 0; c < cont; c++)
             {
-                if (EhOperando(c))
+                if (!EhOperador(aaaa[c]))
                 {
-                    valores.Empilhar(double.Parse(c + ""));
+                   valores.Empilhar(double.Parse(aaaa[c].Replace('.',',')));
                 }
                 else
                 {
-                    v1 = valores.Desempilhar();
-                    v2 = valores.Desempilhar();
-                    switch (c)
+                  v1 = valores.Desempilhar();
+                   v2 = valores.Desempilhar();
+                    switch (aaaa[c])
                     {
-                        case '+': result = v2 + v1; break;
-                        case '-': result = v2 - v1; break;
-                        case '*': result = v2 * v1; break;
-                        case '/': result = v2 / v1; break;
-                        case '^': result = Math.Pow(v2, v1); break;
-                        case 'V': result = Math.Pow(v2, 1 / v1); break;
+                        case "+": result = v2 + v1; break;
+                        case "-": result = v2 - v1; break;
+                        case "*": result = v2 * v1; break;
+                        case "/": result = v2 / v1; break;
+                        case "^": result = Math.Pow(v2, v1); break;
+                        case "V": result = Math.Pow(v2, 1 / v1); break;
                     }
                     valores.Empilhar(result);
                 }
             }
 
             this.resultado = valores.Desempilhar();
+        }
+
+        private void btn7_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void frmCalculadora_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void txtVisor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == '0')
+                btn0.PerformClick();
+            else
+            if (e.KeyValue == '1')
+                btn1.PerformClick();
+            else
+            if (e.KeyValue == '2')
+                btn2.PerformClick();
+            else
+            if (e.KeyValue == '3')
+                btn3.PerformClick();
+            else
+            if (e.KeyValue == '4')
+                btn4.PerformClick();
+            else
+            if (e.KeyValue == '5')
+                btn5.PerformClick();
+            else
+            if (e.KeyValue == '6')
+                btn6.PerformClick();
+            else
+            if (e.KeyValue == '7')
+                btn7.PerformClick();
+            else
+            if (e.KeyValue == '8')
+                btn8.PerformClick();
+            else
+            if (e.KeyValue == '9')
+                btn9.PerformClick();
+            else
+            if (e.KeyValue == '4')
+                btn4.PerformClick();
+            else
+            if (e.KeyValue == '5')
+                btn5.PerformClick();
+            else
+            if (e.KeyValue == '+')
+                btnAdicao.PerformClick();
+            else
+            if (e.KeyValue == '-')
+                btnSubtracao.PerformClick();
+            else
+            if (e.KeyValue == '*')
+                btnMultiplicacao.PerformClick();
+            else
+            if (e.KeyValue == '/')
+                btnDivisao.PerformClick();
         }
     }
 }
