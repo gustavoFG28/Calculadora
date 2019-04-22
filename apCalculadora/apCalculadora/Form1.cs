@@ -120,7 +120,14 @@ namespace apCalculadora
         {
             for(int i = 0; i < vet.Length; i++)
             {
-                if(EhOperando(vet[i]))
+                if(EhOperando(Char.Parse(vet[i])))
+                {
+                    lbSequencia.Text = lbSequencia.Text + Convert.ToChar(65+i).ToString();
+                }
+                else
+                {
+                    lbSequencia.Text = lbSequencia.Text + vet[i];
+                }
 
             }
         }
