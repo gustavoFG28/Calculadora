@@ -14,7 +14,7 @@ namespace apCalculadora
     {
         bool[,] precedencia;
         string sequenciaPosFixa;
-        string[] aaaa;
+        string[] vet;
         PilhaHerdaLista<double> valores;
         PilhaHerdaLista<char> operadores;
         double resultado;
@@ -41,7 +41,7 @@ namespace apCalculadora
             lbSequencia.Text = "";
             txtResultado.Clear();
             sequenciaPosFixa = "";
-            aaaa = new string[100];
+            vet = new string[100];
             valores = new PilhaHerdaLista<double>();
             operadores = new PilhaHerdaLista<char>();
             cont = 0;
@@ -88,9 +88,9 @@ namespace apCalculadora
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            aaaa = new string[100];
+            vet = new string['Z'];
             string sequenciaInfixa = txtVisor.Text;
-            for(int i = 0; i < sequenciaInfixa.Length; i++)
+            for (int i = 0; i < sequenciaInfixa.Length; i++)
             {
                 string elemento = "";
 
@@ -116,12 +116,21 @@ namespace apCalculadora
             txtResultado.Text = resultado + "";
         }
 
+        private void EscreverInfixa()
+        {
+            for(int i = 0; i < vet.Length; i++)
+            {
+                if(EhOperando(vet[i]))
+
+            }
+        }
+
         private void TratarElemento(string c, ref string seq)
         {
 
             if (!EhOperador(c))
             {
-                aaaa[cont++] = c;
+                vet[cont++] = c;
                 seq += c;
 
             }
@@ -140,7 +149,7 @@ namespace apCalculadora
                             if (op != '(' && op != ')')
                             {
                                 seq += op;
-                                aaaa[cont++] = op + "";
+                                vet[cont++] = op + "";
                             }
 
                             if(operadores.EstaVazia())
@@ -167,7 +176,7 @@ namespace apCalculadora
                 char op = operadores.Desempilhar();
                 if (op != '(' && op != ')')
                 {
-                    aaaa[cont++] = op + "";
+                    vet[cont++] = op + "";
                     sequenciaPosFixa += op;
                 }
             }
@@ -271,15 +280,15 @@ namespace apCalculadora
             double v1 = 0, v2 = 0, result = 0;
             for (int c = 0; c < cont; c++)
             {
-                if (!EhOperador(aaaa[c]))
+                if (!EhOperador(vet[c]))
                 {
-                   valores.Empilhar(double.Parse(aaaa[c].Replace('.',',')));
+                    valores.Empilhar(double.Parse(vet[c].Replace('.', ',')));
                 }
                 else
                 {
-                  v1 = valores.Desempilhar();
-                   v2 = valores.Desempilhar();
-                    switch (aaaa[c])
+                    v1 = valores.Desempilhar();
+                    v2 = valores.Desempilhar();
+                    switch (vet[c])
                     {
                         case "+": result = v2 + v1; break;
                         case "-": result = v2 - v1; break;
@@ -307,53 +316,6 @@ namespace apCalculadora
 
         private void txtVisor_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue == '0')
-                btn0.PerformClick();
-            else
-            if (e.KeyValue == '1')
-                btn1.PerformClick();
-            else
-            if (e.KeyValue == '2')
-                btn2.PerformClick();
-            else
-            if (e.KeyValue == '3')
-                btn3.PerformClick();
-            else
-            if (e.KeyValue == '4')
-                btn4.PerformClick();
-            else
-            if (e.KeyValue == '5')
-                btn5.PerformClick();
-            else
-            if (e.KeyValue == '6')
-                btn6.PerformClick();
-            else
-            if (e.KeyValue == '7')
-                btn7.PerformClick();
-            else
-            if (e.KeyValue == '8')
-                btn8.PerformClick();
-            else
-            if (e.KeyValue == '9')
-                btn9.PerformClick();
-            else
-            if (e.KeyValue == '4')
-                btn4.PerformClick();
-            else
-            if (e.KeyValue == '5')
-                btn5.PerformClick();
-            else
-            if (e.KeyValue == '+')
-                btnAdicao.PerformClick();
-            else
-            if (e.KeyValue == '-')
-                btnSubtracao.PerformClick();
-            else
-            if (e.KeyValue == '*')
-                btnMultiplicacao.PerformClick();
-            else
-            if (e.KeyValue == '/')
-                btnDivisao.PerformClick();
         }
     }
 }
