@@ -55,6 +55,7 @@
     <Compile Include="IStack.cs" />
     <Compile Include="ListaSimples.cs" />
     <Compile Include="NoLista.cs" />
+    <Compile Include="Operacao.cs" />
     <Compile Include="PilhaHerdaLista.cs" />
     <Compile Include="PilhaVaziaException.cs" />
     <Compile Include="Program.cs" />

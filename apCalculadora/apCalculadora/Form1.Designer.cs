@@ -52,6 +52,7 @@
             this.btnIgual = new System.Windows.Forms.Button();
             this.btnAbreParenteses = new System.Windows.Forms.Button();
             this.btnFechaParenteses = new System.Windows.Forms.Button();
+            this.lbSequencia2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtVisor
@@ -316,11 +317,20 @@
             this.btnFechaParenteses.UseVisualStyleBackColor = true;
             this.btnFechaParenteses.Click += new System.EventHandler(this.btn5_Click);
             // 
+            // lbSequencia2
+            // 
+            this.lbSequencia2.AutoSize = true;
+            this.lbSequencia2.Location = new System.Drawing.Point(279, 89);
+            this.lbSequencia2.Name = "lbSequencia2";
+            this.lbSequencia2.Size = new System.Drawing.Size(0, 13);
+            this.lbSequencia2.TabIndex = 24;
+            // 
             // frmCalculadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(411, 437);
+            this.Controls.Add(this.lbSequencia2);
             this.Controls.Add(this.btnFechaParenteses);
             this.Controls.Add(this.btnAbreParenteses);
             this.Controls.Add(this.btnIgual);
@@ -380,6 +390,7 @@
         private System.Windows.Forms.Button btnIgual;
         private System.Windows.Forms.Button btnAbreParenteses;
         private System.Windows.Forms.Button btnFechaParenteses;
+        private System.Windows.Forms.Label lbSequencia2;
     }
 }
 
