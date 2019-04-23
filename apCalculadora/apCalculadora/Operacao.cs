@@ -59,9 +59,8 @@ namespace apCalculadora
 
             }
             EscreverInfixa(ref seqIn);
-            EscreverPosfixa(ref seqPos);
-
             TratarPilhaOperadores();
+            EscreverPosfixa(ref seqPos);
 
             Calcular();
 
@@ -116,7 +115,7 @@ namespace apCalculadora
                             if (op != "(" && op != ")")
                             {
                                 sequenciaPosFixa += op;
-                                vetPos[cont] = op;
+                                vetPos[cont2++] = op;
                             }
 
                             if (operadores.EstaVazia())

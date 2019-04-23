@@ -320,9 +320,10 @@
             // lbSequencia2
             // 
             this.lbSequencia2.AutoSize = true;
+            this.lbSequencia2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSequencia2.Location = new System.Drawing.Point(279, 89);
             this.lbSequencia2.Name = "lbSequencia2";
-            this.lbSequencia2.Size = new System.Drawing.Size(0, 13);
+            this.lbSequencia2.Size = new System.Drawing.Size(0, 21);
             this.lbSequencia2.TabIndex = 24;
             // 
             // frmCalculadora

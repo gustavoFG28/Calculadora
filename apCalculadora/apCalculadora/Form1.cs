@@ -28,6 +28,7 @@ namespace apCalculadora
         {
             txtVisor.Clear();
             lbSequencia.Text = "";
+            lbSequencia2.Text = "";
             txtResultado.Clear();
             operacao.Resetar();
         }
