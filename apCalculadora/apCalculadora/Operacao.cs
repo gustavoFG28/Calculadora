@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace apCalculadora
 {
     class Operacao
-    {
+    { 
         bool[,] precedencia;
         string sequenciaPosFixa;
         string[] vetIn;

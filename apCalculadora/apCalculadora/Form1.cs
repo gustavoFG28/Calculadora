@@ -73,6 +73,8 @@ namespace apCalculadora
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
+            if (txtResultado.Text != null)
+                operacao.Resetar();
             string seqIn = "";
             string seqPos = "";
             txtResultado.Text = operacao.Resultar(txtVisor.Text, ref seqIn,ref seqPos);
