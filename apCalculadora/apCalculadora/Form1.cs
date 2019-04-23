@@ -106,7 +106,9 @@ namespace apCalculadora
                     elemento = sequenciaInfixa[i] + "";
 
                 TratarElemento(elemento, ref sequenciaPosFixa);
+               
             }
+             EscreverInfixa();
 
             TratarPilhaOperadores();
 
@@ -118,17 +120,18 @@ namespace apCalculadora
 
         private void EscreverInfixa()
         {
-            for(int i = 0; i < vet.Length; i++)
+            char pos = 'A';
+            foreach(char i in txtVisor.Text)
             {
-                if(EhOperando(Char.Parse(vet[i])))
-                {
-                    lbSequencia.Text = lbSequencia.Text + Convert.ToChar(65+i).ToString();
-                }
-                else
-                {
-                    lbSequencia.Text = lbSequencia.Text + vet[i];
-                }
-
+                    if(EhOperando(i))
+                    {
+                        lbSequencia.Text += pos;
+                        pos++;
+                    }
+                    else
+                    {
+                        lbSequencia.Text += i;
+                    }
             }
         }
 
