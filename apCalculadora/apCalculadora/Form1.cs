@@ -105,33 +105,30 @@ namespace apCalculadora
                 else
                     elemento = sequenciaInfixa[i] + "";
 
+                vet[cont++] = elemento;
                 TratarElemento(elemento, ref sequenciaPosFixa);
                
             }
-             EscreverInfixa();
+            EscreverInfixa();
 
             TratarPilhaOperadores();
 
             Calcular();
 
-            lbSequencia.Text = sequenciaPosFixa;
+            //lbSequencia.Text = sequenciaPosFixa;
             txtResultado.Text = resultado + "";
         }
 
         private void EscreverInfixa()
         {
             char pos = 'A';
-            foreach(char i in txtVisor.Text)
+            for(int i = 0; i < cont; i++)
             {
-                    if(EhOperando(i))
-                    {
-                        lbSequencia.Text += pos;
-                        pos++;
-                    }
-                    else
-                    {
-                        lbSequencia.Text += i;
-                    }
+                if (EhOperador(vet[i]))
+                    lbSequencia.Text += vet[i];
+                else
+                    lbSequencia.Text += pos++;
+                
             }
         }
 
@@ -140,15 +137,15 @@ namespace apCalculadora
 
             if (!EhOperador(c))
             {
-                vet[cont++] = c;
                 seq += c;
-
             }
             else
             {
                 char operador = c[0];
                 if (operadores.EstaVazia())
+                {
                     operadores.Empilhar(operador);
+                }
                 else
                 {
                     do
@@ -159,10 +156,9 @@ namespace apCalculadora
                             if (op != '(' && op != ')')
                             {
                                 seq += op;
-                                vet[cont++] = op + "";
                             }
 
-                            if(operadores.EstaVazia())
+                            if (operadores.EstaVazia())
                             {
                                 operadores.Empilhar(operador);
                                 break;
@@ -186,7 +182,6 @@ namespace apCalculadora
                 char op = operadores.Desempilhar();
                 if (op != '(' && op != ')')
                 {
-                    vet[cont++] = op + "";
                     sequenciaPosFixa += op;
                 }
             }
@@ -290,15 +285,15 @@ namespace apCalculadora
             double v1 = 0, v2 = 0, result = 0;
             for (int c = 0; c < cont; c++)
             {
-                if (!EhOperador(vet[c]))
+                if (EhOperando(sequenciaPosFixa[c]))
                 {
-                    valores.Empilhar(double.Parse(vet[c].Replace('.', ',')));
+                    valores.Empilhar(double.Parse(sequenciaPosFixa[c].ToString().Replace('.', ',')));
                 }
                 else
                 {
                     v1 = valores.Desempilhar();
                     v2 = valores.Desempilhar();
-                    switch (vet[c])
+                    switch (sequenciaPosFixa[c].ToString())
                     {
                         case "+": result = v2 + v1; break;
                         case "-": result = v2 - v1; break;
