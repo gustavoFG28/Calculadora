@@ -29,18 +29,18 @@ namespace apCalculadora
             txtVisor.Clear();
             lbSequencia.Text = "";
             lbSequencia2.Text = "";
-            txtResultado.Clear();
+            txtResultado.Text = "0";
             operacao.Resetar();
         }
 
         private void btn5_Click(object sender, EventArgs e)
         {
             Button qualBotao = (Button)sender;
-            if(!operacao.EhOperador(qualBotao.Text[0].ToString()))
-            {
+            //if(!operacao.EhOperador(qualBotao.Text[0].ToString()))
+            //{
                 txtVisor.Text += qualBotao.Text;
-            }
-            else
+           // }
+           /* else
             {
                 char ultimoCaracter = ' ';
                 if (txtVisor.Text.Length > 0)
@@ -68,12 +68,12 @@ namespace apCalculadora
                     txtVisor.Text += qualBotao.Text;
 
 
-            }
+            }*/
         }
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            if (txtResultado.Text != null)
+            if (txtResultado.Text != "0")
                 operacao.Resetar();
             string seqIn = "";
             string seqPos = "";
@@ -82,21 +82,9 @@ namespace apCalculadora
             lbSequencia2.Text = seqPos + "";
         }
 
-
-        
-
-        private void btn7_KeyDown(object sender, KeyEventArgs e)
+        private void btnApagarCaracter_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void frmCalculadora_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-        }
-
-        private void txtVisor_KeyDown(object sender, KeyEventArgs e)
-        {
+            txtVisor.Text = txtVisor.Text.Remove(txtVisor.Text.Length - 1);
         }
     }
 }

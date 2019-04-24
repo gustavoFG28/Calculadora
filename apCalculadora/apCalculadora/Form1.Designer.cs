@@ -53,6 +53,7 @@
             this.btnAbreParenteses = new System.Windows.Forms.Button();
             this.btnFechaParenteses = new System.Windows.Forms.Button();
             this.lbSequencia2 = new System.Windows.Forms.Label();
+            this.btnApagarCaracter = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtVisor
@@ -64,7 +65,6 @@
             this.txtVisor.Size = new System.Drawing.Size(369, 31);
             this.txtVisor.TabIndex = 0;
             this.txtVisor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtVisor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btn7
             // 
@@ -76,7 +76,6 @@
             this.btn7.Text = "7";
             this.btn7.UseVisualStyleBackColor = true;
             this.btn7.Click += new System.EventHandler(this.btn5_Click);
-            this.btn7.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn7_KeyDown);
             // 
             // btn4
             // 
@@ -251,6 +250,7 @@
             this.txtResultado.ReadOnly = true;
             this.txtResultado.Size = new System.Drawing.Size(369, 33);
             this.txtResultado.TabIndex = 17;
+            this.txtResultado.Text = "0";
             this.txtResultado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbSequencia
@@ -287,7 +287,7 @@
             // btnIgual
             // 
             this.btnIgual.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIgual.Location = new System.Drawing.Point(96, 370);
+            this.btnIgual.Location = new System.Drawing.Point(21, 370);
             this.btnIgual.Name = "btnIgual";
             this.btnIgual.Size = new System.Drawing.Size(219, 54);
             this.btnIgual.TabIndex = 21;
@@ -326,11 +326,23 @@
             this.lbSequencia2.Size = new System.Drawing.Size(0, 21);
             this.lbSequencia2.TabIndex = 24;
             // 
+            // btnApagarCaracter
+            // 
+            this.btnApagarCaracter.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApagarCaracter.Location = new System.Drawing.Point(246, 370);
+            this.btnApagarCaracter.Name = "btnApagarCaracter";
+            this.btnApagarCaracter.Size = new System.Drawing.Size(144, 54);
+            this.btnApagarCaracter.TabIndex = 25;
+            this.btnApagarCaracter.Text = "CE";
+            this.btnApagarCaracter.UseVisualStyleBackColor = true;
+            this.btnApagarCaracter.Click += new System.EventHandler(this.btnApagarCaracter_Click);
+            // 
             // frmCalculadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(411, 437);
+            this.Controls.Add(this.btnApagarCaracter);
             this.Controls.Add(this.lbSequencia2);
             this.Controls.Add(this.btnFechaParenteses);
             this.Controls.Add(this.btnAbreParenteses);
@@ -359,7 +371,6 @@
             this.Name = "frmCalculadora";
             this.Text = "Calculadora";
             this.Load += new System.EventHandler(this.frmCalculadora_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCalculadora_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,6 +403,7 @@
         private System.Windows.Forms.Button btnAbreParenteses;
         private System.Windows.Forms.Button btnFechaParenteses;
         private System.Windows.Forms.Label lbSequencia2;
+        private System.Windows.Forms.Button btnApagarCaracter;
     }
 }
 

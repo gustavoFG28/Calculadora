@@ -53,7 +53,12 @@ namespace apCalculadora
                     i = inicial + elemento.Length - 1;
                 }
                 else
-                    elemento = sequenciaInfixa[i] + "";
+                {
+                    if (sequenciaInfixa[i] == '-' && (i == 0 || sequenciaInfixa[i - 1] == '('))
+                        elemento = "@";
+                    else
+                        elemento = sequenciaInfixa[i] + "";
+                }
                 vetIn[cont++] = elemento;
                 TratarElemento(elemento);
 
@@ -72,7 +77,12 @@ namespace apCalculadora
             for (int i = 0; i < cont; i++)
             {
                 if (EhOperador(vetIn[i]))
+                {
+                    if (vetIn[i] == "@")
+                        seq += "-";
+                    else
                     seq += vetIn[i];
+                }
                 else
                     seq += pos++;
 
@@ -84,7 +94,12 @@ namespace apCalculadora
             for (int i = 0; i < cont2; i++)
             {
                 if (EhOperador(vetPos[i]))
-                    seq += vetPos[i];
+                {
+                    if (vetPos[i] == "@")
+                        seq += "-";
+                    else
+                        seq += vetPos[i];
+                }
                 else
                     seq += pos++;
 
@@ -109,7 +124,7 @@ namespace apCalculadora
                 {
                     do
                     {
-                        if (TemPrecedencia(operadores.OTopo()[0], operador[0]))
+                                                                                                                                                                                                   if (TemPrecedencia(operadores.OTopo()[0], operador[0]))
                         {
                             string op = operadores.Desempilhar();
                             if (op != "(" && op != ")")
@@ -158,7 +173,9 @@ namespace apCalculadora
                 else
                 {
                     v1 = valores.Desempilhar();
-                    v2 = valores.Desempilhar();
+                    if(vetPos[c] != "V" && vetPos[c] != "@")
+                        v2 = valores.Desempilhar();
+
                     switch (vetPos[c])
                     {
                         case "+": result = v2 + v1; break;
@@ -166,7 +183,8 @@ namespace apCalculadora
                         case "*": result = v2 * v1; break;
                         case "/": result = v2 / v1; break;
                         case "^": result = Math.Pow(v2, v1); break;
-                        case "V": result = Math.Pow(v2, 1 / v1); break;
+                        case "V": result = Math.Sqrt(v1); break;
+                        case "@": result = -v1; break;
                     }
                     valores.Empilhar(result);
                 }
@@ -232,8 +250,22 @@ namespace apCalculadora
             precedencia['(', 'V'] = false;
             precedencia['(', '('] = false;
             precedencia['(', ')'] = true;
-
-
+            precedencia['@', '+'] = true;
+            precedencia['@', '-'] = true;
+            precedencia['@', '*'] = true;
+            precedencia['@', '/'] = true;
+            precedencia['@', '^'] = true;
+            precedencia['@', 'V'] = true;
+            precedencia['@', '('] = false;
+            precedencia['@', ')'] = true;
+            precedencia['+', '@'] = false;
+            precedencia['-', '@'] = false;
+            precedencia['*', '@'] = false;
+            precedencia['/', '@'] = false;
+            precedencia['^', '@'] = false;
+            precedencia['V', '@'] = false;
+            precedencia['(', '@'] = true;
+            precedencia[')', '@'] = false;
         }
 
         public bool EhOperador(string qual)
@@ -241,6 +273,7 @@ namespace apCalculadora
             switch (qual)
             {
                 case "+":
+                case "@":
                 case "-":
                 case "*":
                 case "/":
