@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace apCalculadora
 {
     class Operacao
-    { 
-        bool[,] precedencia;
+    {
         string sequenciaPosFixa;
         string[] vetIn;
         string[] vetPos;
@@ -21,8 +20,7 @@ namespace apCalculadora
         public Operacao()
         {
             Resetar();
-            precedencia = new bool[100, 100];
-            IniciarMatrizPrecedencia();
+            //IniciarMatrizPrecedencia();
         }
 
         public void Resetar()
@@ -37,8 +35,8 @@ namespace apCalculadora
 
         public string Resultar(string texto, ref string seqIn, ref string seqPos)
         {
-            vetIn = new string['Z'];
-            vetPos = new string['Z'];
+            vetIn = new string[26];
+            vetPos = new string[26];
             string sequenciaInfixa = texto;
             for (int i = 0; i < sequenciaInfixa.Length; i++)
             {
@@ -107,6 +105,28 @@ namespace apCalculadora
         }
         private void TratarElemento(string c)
         {
+            bool TemPrecedencia(char topo, char operacao)
+            {
+                switch (topo)
+                {
+                    case '+':
+                    case '-':
+                        if (operacao == '+' || operacao == '-' || operacao == ')')
+                            return true;break;
+
+                    case '*':
+                    case '/':
+                    case '^':
+                    case 'V':
+                        if (operacao == '+' || operacao == '-' || operacao == '*' || operacao == '/' || operacao == ')')
+                            return true; break;
+                    case '(': if (operacao == ')' || operacao == '@')
+                            return true; break;
+                    case '@': return false; break;
+                
+                }
+                return false;
+        }
 
             if (!EhOperador(c))
             {
@@ -124,7 +144,7 @@ namespace apCalculadora
                 {
                     do
                     {
-                                                                                                                                                                                                   if (TemPrecedencia(operadores.OTopo()[0], operador[0]))
+                        if (TemPrecedencia(operadores.OTopo()[0], operador[0]))
                         {
                             string op = operadores.Desempilhar();
                             if (op != "(" && op != ")")
@@ -192,81 +212,83 @@ namespace apCalculadora
 
             this.resultado = valores.Desempilhar();
         }
-        private void IniciarMatrizPrecedencia()
-        {
-            precedencia['+', '+'] = true;
-            precedencia['+', '-'] = true;
-            precedencia['+', '*'] = false;
-            precedencia['+', '/'] = false;
-            precedencia['+', '^'] = false;
-            precedencia['+', 'V'] = false;
-            precedencia['+', '('] = false;
-            precedencia['+', ')'] = true;
-            precedencia['-', '+'] = true;
-            precedencia['-', '-'] = true;
-            precedencia['-', '*'] = false;
-            precedencia['-', '/'] = false;
-            precedencia['-', '^'] = false;
-            precedencia['-', 'V'] = false;
-            precedencia['-', '('] = false;
-            precedencia['-', ')'] = true;
-            precedencia['*', '+'] = true;
-            precedencia['*', '-'] = true;
-            precedencia['*', '*'] = true;
-            precedencia['*', '/'] = true;
-            precedencia['*', '^'] = false;
-            precedencia['*', 'V'] = false;
-            precedencia['*', '('] = false;
-            precedencia['*', ')'] = true;
-            precedencia['/', '+'] = true;
-            precedencia['/', '-'] = true;
-            precedencia['/', '*'] = true;
-            precedencia['/', '/'] = true;
-            precedencia['/', '^'] = false;
-            precedencia['/', 'V'] = false;
-            precedencia['/', '('] = false;
-            precedencia['/', ')'] = true;
-            precedencia['^', '+'] = true;
-            precedencia['^', '-'] = true;
-            precedencia['^', '*'] = true;
-            precedencia['^', '/'] = true;
-            precedencia['^', '^'] = true;
-            precedencia['^', 'V'] = true;
-            precedencia['^', '('] = false;
-            precedencia['^', ')'] = true;
-            precedencia['V', '+'] = true;
-            precedencia['V', '-'] = true;
-            precedencia['V', '*'] = true;
-            precedencia['V', '/'] = true;
-            precedencia['V', '^'] = true;
-            precedencia['V', 'V'] = true;
-            precedencia['V', '('] = false;
-            precedencia['V', ')'] = true;
-            precedencia['(', '+'] = false;
-            precedencia['(', '-'] = false;
-            precedencia['(', '*'] = false;
-            precedencia['(', '/'] = false;
-            precedencia['(', '^'] = false;
-            precedencia['(', 'V'] = false;
-            precedencia['(', '('] = false;
-            precedencia['(', ')'] = true;
-            precedencia['@', '+'] = true;
-            precedencia['@', '-'] = true;
-            precedencia['@', '*'] = true;
-            precedencia['@', '/'] = true;
-            precedencia['@', '^'] = true;
-            precedencia['@', 'V'] = true;
-            precedencia['@', '('] = false;
-            precedencia['@', ')'] = true;
-            precedencia['+', '@'] = false;
-            precedencia['-', '@'] = false;
-            precedencia['*', '@'] = false;
-            precedencia['/', '@'] = false;
-            precedencia['^', '@'] = false;
-            precedencia['V', '@'] = false;
-            precedencia['(', '@'] = true;
-            precedencia[')', '@'] = false;
-        }
+        //private void IniciarMatrizPrecedencia()
+        //{
+        //    precedencia['+', '+'] = true;
+        //    precedencia['+', '-'] = true;
+        //    precedencia['+', '*'] = false;
+        //    precedencia['+', '/'] = false;
+        //    precedencia['+', '^'] = false;
+        //    precedencia['+', 'V'] = false;
+        //    precedencia['+', '('] = false;
+        //    precedencia['+', ')'] = true;
+        //    precedencia['-', '+'] = true;
+        //    precedencia['-', '-'] = true;
+        //    precedencia['-', '*'] = false;
+        //    precedencia['-', '/'] = false;
+        //    precedencia['-', '^'] = false;
+        //    precedencia['-', 'V'] = false;
+        //    precedencia['-', '('] = false;
+        //    precedencia['-', ')'] = true;
+        //    precedencia['*', '+'] = true;
+        //    precedencia['*', '-'] = true;
+        //    precedencia['*', '*'] = true;
+        //    precedencia['*', '/'] = true;
+        //    precedencia['*', '^'] = false;
+        //    precedencia['*', 'V'] = false;
+        //    precedencia['*', '('] = false;
+        //    precedencia['*', ')'] = true;
+        //    precedencia['/', '+'] = true;
+        //    precedencia['/', '-'] = true;
+        //    precedencia['/', '*'] = true;
+        //    precedencia['/', '/'] = true;
+        //    precedencia['/', '^'] = false;
+        //    precedencia['/', 'V'] = false;
+        //    precedencia['/', '('] = false;
+        //    precedencia['/', ')'] = true;
+        //    precedencia['^', '+'] = true;
+        //    precedencia['^', '-'] = true;
+        //    precedencia['^', '*'] = true;
+        //    precedencia['^', '/'] = true;
+        //    precedencia['^', '^'] = true;
+        //    precedencia['^', 'V'] = true;
+        //    precedencia['^', '('] = false;
+        //    precedencia['^', ')'] = true;
+        //    precedencia['V', '+'] = true;
+        //    precedencia['V', '-'] = true;
+        //    precedencia['V', '*'] = true;
+        //    precedencia['V', '/'] = true;
+        //    precedencia['V', '^'] = true;
+        //    precedencia['V', 'V'] = true;
+        //    precedencia['V', '('] = false;
+        //    precedencia['V', ')'] = true;
+        //    precedencia['(', '+'] = false;
+        //    precedencia['(', '-'] = false;
+        //    precedencia['(', '*'] = false;
+        //    precedencia['(', '/'] = false;
+        //    precedencia['(', '^'] = false;
+        //    precedencia['(', 'V'] = false;
+        //    precedencia['(', '('] = false;
+        //    precedencia['(', ')'] = true;
+        //    precedencia['@', '+'] = true;
+        //    precedencia['@', '-'] = true;
+        //    precedencia['@', '*'] = true;
+        //    precedencia['@', '/'] = true;
+        //    precedencia['@', '^'] = true;
+        //    precedencia['@', 'V'] = true;
+        //    precedencia['@', '('] = false;
+        //    precedencia['@', ')'] = true;
+        //    precedencia['+', '@'] = false;
+        //    precedencia['-', '@'] = false;
+        //    precedencia['*', '@'] = false;
+        //    precedencia['/', '@'] = false;
+        //    precedencia['^', '@'] = false;
+        //    precedencia['V', '@'] = false;
+        //    precedencia['(', '@'] = true;
+        //    precedencia[')', '@'] = false;
+
+        //    precedencia['^', '-'] = true;
+        //}
 
         public bool EhOperador(string qual)
         {
@@ -285,14 +307,5 @@ namespace apCalculadora
                 default: return false;
             }
         }
-
-        public bool TemPrecedencia(char a, char b)
-       {
-             if (a == ')')
-                return false;
-
-            return precedencia[a, b];
-       }
-       
     }
 }

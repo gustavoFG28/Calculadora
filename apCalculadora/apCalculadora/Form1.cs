@@ -22,6 +22,7 @@ namespace apCalculadora
         private void frmCalculadora_Load(object sender, EventArgs e)
         {
             operacao = new Operacao();
+            MessageBox.Show("a");
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
