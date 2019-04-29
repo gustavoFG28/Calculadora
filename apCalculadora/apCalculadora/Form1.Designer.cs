@@ -65,6 +65,7 @@
             this.txtVisor.Size = new System.Drawing.Size(369, 31);
             this.txtVisor.TabIndex = 0;
             this.txtVisor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtVisor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btn7
             // 
@@ -371,6 +372,7 @@
             this.Name = "frmCalculadora";
             this.Text = "Calculadora";
             this.Load += new System.EventHandler(this.frmCalculadora_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

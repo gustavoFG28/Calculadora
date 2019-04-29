@@ -37,39 +37,14 @@ namespace apCalculadora
         private void btn5_Click(object sender, EventArgs e)
         {
             Button qualBotao = (Button)sender;
-            //if(!operacao.EhOperador(qualBotao.Text[0].ToString()))
-            //{
-                txtVisor.Text += qualBotao.Text;
-           // }
-           /* else
+            if (!txtVisor.Text.Equals(""))
             {
-                char ultimoCaracter = ' ';
-                if (txtVisor.Text.Length > 0)
-                {
-                    ultimoCaracter = txtVisor.Text[txtVisor.Text.Length - 1];
-
-                    if (!operacao.EhOperador(ultimoCaracter.ToString()))
-                    {
-                            txtVisor.Text += qualBotao.Text;
-                    }
-                    else
-                    {
-                        if (qualBotao.Text == "(")
-                            txtVisor.Text += qualBotao.Text;
-
-                        if(ultimoCaracter == ')')
-                        {
-                            if(qualBotao.Text!= "(")
-                                txtVisor.Text += qualBotao.Text;
-                        }
-                    }
-                }
-                else
-                    if (qualBotao.Text == "(")
+                if (!operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1] + ""))
                     txtVisor.Text += qualBotao.Text;
+            }
+            else
+                txtVisor.Text += qualBotao.Text;
 
-
-            }*/
         }
 
         private void btnIgual_Click(object sender, EventArgs e)
@@ -78,7 +53,7 @@ namespace apCalculadora
                 operacao.Resetar();
             string seqIn = "";
             string seqPos = "";
-            txtResultado.Text = operacao.Resultar(txtVisor.Text, ref seqIn,ref seqPos);
+            txtResultado.Text = operacao.Resultar(txtVisor.Text, ref seqIn, ref seqPos);
             lbSequencia.Text = seqIn + "";
             lbSequencia2.Text = seqPos + "";
         }
@@ -86,6 +61,43 @@ namespace apCalculadora
         private void btnApagarCaracter_Click(object sender, EventArgs e)
         {
             txtVisor.Text = txtVisor.Text.Remove(txtVisor.Text.Length - 1);
+        }
+
+        private void txtVisor_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.D0:
+                case Keys.NumPad0: btn0.PerformClick(); break;
+                case Keys.D1:
+                case Keys.NumPad1: btn1.PerformClick(); break;
+                case Keys.D2:
+                case Keys.NumPad2: btn2.PerformClick(); break;
+                case Keys.D3:
+                case Keys.NumPad3: btn3.PerformClick(); break;
+                case Keys.D4:
+                case Keys.NumPad4: btn4.PerformClick(); break;
+                case Keys.D5:
+                case Keys.NumPad5: btn5.PerformClick(); break;
+                case Keys.D6:
+                case Keys.NumPad6: btn6.PerformClick(); break;
+                case Keys.D7:
+                case Keys.NumPad7: btn7.PerformClick(); break;
+                case Keys.D8:
+                case Keys.NumPad8: btn8.PerformClick(); break;
+                case Keys.D9:
+                case Keys.NumPad9: btn9.PerformClick(); break;
+                case Keys.Back:
+                    if(!txtVisor.Text.Equals(""))
+                    btnApagarCaracter.PerformClick(); break;
+
+                case Keys.Delete: btnLimpar.PerformClick(); break;
+                case Keys.Add: btnAdicao.PerformClick(); break;
+                case Keys.Subtract: btnSubtracao.PerformClick(); break;
+
+
+            }
+            txtVisor.Select(txtVisor.Text.Length, 0);
         }
     }
 }
