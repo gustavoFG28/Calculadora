@@ -99,5 +99,16 @@ namespace apCalculadora
             }
             txtVisor.Select(txtVisor.Text.Length, 0);
         }
+
+        private void btn0_Click(object sender, EventArgs e)
+        {
+            if (txtVisor.Text.Length == 0 || txtVisor.Text[txtVisor.Text.Length - 1] != ')')
+                txtVisor.Text += ((Button)sender).Text;
+        }
+
+        private void btnPonto_Click(object sender, EventArgs e)
+        {
+            if (txtVisor.Text.Length != 0 || !operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1]))
+        }
     }
 }
