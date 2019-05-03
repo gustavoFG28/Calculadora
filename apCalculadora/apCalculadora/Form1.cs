@@ -22,7 +22,6 @@ namespace apCalculadora
         private void frmCalculadora_Load(object sender, EventArgs e)
         {
             operacao = new Operacao();
-            MessageBox.Show("a");
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -41,6 +40,22 @@ namespace apCalculadora
             {
                 if (!operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1] + ""))
                     txtVisor.Text += qualBotao.Text;
+                else
+                {
+
+                    if (txtVisor.Text[txtVisor.Text.Length - 1] + "" == "*" ||
+                        txtVisor.Text[txtVisor.Text.Length - 1] + "" == "/" ||
+                        txtVisor.Text[txtVisor.Text.Length - 1] + "" == "^" ||
+                        txtVisor.Text[txtVisor.Text.Length - 1] + "" == "V")
+                    {
+                        if (qualBotao.Text == "(")
+                            txtVisor.Text += qualBotao.Text;
+                    }
+                    if (txtVisor.Text[txtVisor.Text.Length - 1] + "" == ")")
+                        txtVisor.Text += qualBotao.Text;
+                }
+                
+
             }
             else
                 txtVisor.Text += qualBotao.Text;
@@ -108,7 +123,7 @@ namespace apCalculadora
 
         private void btnPonto_Click(object sender, EventArgs e)
         {
-            if (txtVisor.Text.Length != 0 || !operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1]))
+            //if (txtVisor.Text.Length != 0 || !operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1]))
         }
     }
 }
