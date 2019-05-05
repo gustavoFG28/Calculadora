@@ -24,6 +24,25 @@ public class ListaSimples<Dado> where Dado : IComparable<Dado>
         }
     }
 
+    public void IniciarPercursoSequencial()
+    {
+        atual = primeiro;
+        anterior = null;
+        primeiroAcessoDoPercurso = true;
+    }
+
+    public bool PodePercorrer()
+    {
+        if (primeiroAcessoDoPercurso)
+            primeiroAcessoDoPercurso = false;
+        else
+        {
+            anterior = atual;
+            atual = atual.Prox;
+        }
+        return atual != null;
+    }
+
     public bool EstaVazia
     {
         get => primeiro == null;

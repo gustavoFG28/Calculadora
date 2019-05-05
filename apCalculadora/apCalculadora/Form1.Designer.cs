@@ -46,13 +46,13 @@
             this.btnSubtracao = new System.Windows.Forms.Button();
             this.btnAdicao = new System.Windows.Forms.Button();
             this.txtResultado = new System.Windows.Forms.TextBox();
-            this.lbSequencia = new System.Windows.Forms.Label();
+            this.lbInfixa = new System.Windows.Forms.Label();
             this.btnRadiciacao = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnIgual = new System.Windows.Forms.Button();
             this.btnAbreParenteses = new System.Windows.Forms.Button();
             this.btnFechaParenteses = new System.Windows.Forms.Button();
-            this.lbSequencia2 = new System.Windows.Forms.Label();
+            this.lbPosfixa = new System.Windows.Forms.Label();
             this.btnApagarCaracter = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -70,7 +70,7 @@
             // btn7
             // 
             this.btn7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn7.Location = new System.Drawing.Point(21, 130);
+            this.btn7.Location = new System.Drawing.Point(21, 163);
             this.btn7.Name = "btn7";
             this.btn7.Size = new System.Drawing.Size(69, 54);
             this.btn7.TabIndex = 1;
@@ -81,7 +81,7 @@
             // btn4
             // 
             this.btn4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn4.Location = new System.Drawing.Point(21, 190);
+            this.btn4.Location = new System.Drawing.Point(21, 223);
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(69, 54);
             this.btn4.TabIndex = 2;
@@ -92,7 +92,7 @@
             // btn1
             // 
             this.btn1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn1.Location = new System.Drawing.Point(21, 250);
+            this.btn1.Location = new System.Drawing.Point(21, 283);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(69, 54);
             this.btn1.TabIndex = 3;
@@ -103,7 +103,7 @@
             // btn0
             // 
             this.btn0.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn0.Location = new System.Drawing.Point(21, 310);
+            this.btn0.Location = new System.Drawing.Point(21, 343);
             this.btn0.Name = "btn0";
             this.btn0.Size = new System.Drawing.Size(69, 54);
             this.btn0.TabIndex = 4;
@@ -114,7 +114,7 @@
             // btn8
             // 
             this.btn8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn8.Location = new System.Drawing.Point(96, 130);
+            this.btn8.Location = new System.Drawing.Point(96, 163);
             this.btn8.Name = "btn8";
             this.btn8.Size = new System.Drawing.Size(69, 54);
             this.btn8.TabIndex = 5;
@@ -125,7 +125,7 @@
             // btnPonto
             // 
             this.btnPonto.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPonto.Location = new System.Drawing.Point(96, 310);
+            this.btnPonto.Location = new System.Drawing.Point(96, 343);
             this.btnPonto.Name = "btnPonto";
             this.btnPonto.Size = new System.Drawing.Size(69, 54);
             this.btnPonto.TabIndex = 8;
@@ -136,7 +136,7 @@
             // btn2
             // 
             this.btn2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn2.Location = new System.Drawing.Point(96, 250);
+            this.btn2.Location = new System.Drawing.Point(96, 283);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(69, 54);
             this.btn2.TabIndex = 7;
@@ -147,7 +147,7 @@
             // btn5
             // 
             this.btn5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn5.Location = new System.Drawing.Point(96, 190);
+            this.btn5.Location = new System.Drawing.Point(96, 223);
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(69, 54);
             this.btn5.TabIndex = 6;
@@ -158,7 +158,7 @@
             // btnPotenciacao
             // 
             this.btnPotenciacao.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPotenciacao.Location = new System.Drawing.Point(246, 250);
+            this.btnPotenciacao.Location = new System.Drawing.Point(246, 283);
             this.btnPotenciacao.Name = "btnPotenciacao";
             this.btnPotenciacao.Size = new System.Drawing.Size(69, 54);
             this.btnPotenciacao.TabIndex = 12;
@@ -169,7 +169,7 @@
             // btn3
             // 
             this.btn3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn3.Location = new System.Drawing.Point(171, 250);
+            this.btn3.Location = new System.Drawing.Point(171, 283);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(69, 54);
             this.btn3.TabIndex = 11;
@@ -180,7 +180,7 @@
             // btn6
             // 
             this.btn6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn6.Location = new System.Drawing.Point(171, 190);
+            this.btn6.Location = new System.Drawing.Point(171, 223);
             this.btn6.Name = "btn6";
             this.btn6.Size = new System.Drawing.Size(69, 54);
             this.btn6.TabIndex = 10;
@@ -191,7 +191,7 @@
             // btn9
             // 
             this.btn9.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn9.Location = new System.Drawing.Point(171, 130);
+            this.btn9.Location = new System.Drawing.Point(171, 163);
             this.btn9.Name = "btn9";
             this.btn9.Size = new System.Drawing.Size(69, 54);
             this.btn9.TabIndex = 9;
@@ -202,7 +202,7 @@
             // btnDivisao
             // 
             this.btnDivisao.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDivisao.Location = new System.Drawing.Point(321, 130);
+            this.btnDivisao.Location = new System.Drawing.Point(321, 163);
             this.btnDivisao.Name = "btnDivisao";
             this.btnDivisao.Size = new System.Drawing.Size(69, 54);
             this.btnDivisao.TabIndex = 16;
@@ -213,7 +213,7 @@
             // btnMultiplicacao
             // 
             this.btnMultiplicacao.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMultiplicacao.Location = new System.Drawing.Point(321, 190);
+            this.btnMultiplicacao.Location = new System.Drawing.Point(321, 223);
             this.btnMultiplicacao.Name = "btnMultiplicacao";
             this.btnMultiplicacao.Size = new System.Drawing.Size(69, 54);
             this.btnMultiplicacao.TabIndex = 15;
@@ -224,7 +224,7 @@
             // btnSubtracao
             // 
             this.btnSubtracao.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubtracao.Location = new System.Drawing.Point(246, 190);
+            this.btnSubtracao.Location = new System.Drawing.Point(246, 223);
             this.btnSubtracao.Name = "btnSubtracao";
             this.btnSubtracao.Size = new System.Drawing.Size(69, 54);
             this.btnSubtracao.TabIndex = 14;
@@ -235,7 +235,7 @@
             // btnAdicao
             // 
             this.btnAdicao.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicao.Location = new System.Drawing.Point(246, 130);
+            this.btnAdicao.Location = new System.Drawing.Point(246, 163);
             this.btnAdicao.Name = "btnAdicao";
             this.btnAdicao.Size = new System.Drawing.Size(69, 54);
             this.btnAdicao.TabIndex = 13;
@@ -254,19 +254,20 @@
             this.txtResultado.Text = "0";
             this.txtResultado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // lbSequencia
+            // lbInfixa
             // 
-            this.lbSequencia.AutoSize = true;
-            this.lbSequencia.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSequencia.Location = new System.Drawing.Point(27, 89);
-            this.lbSequencia.Name = "lbSequencia";
-            this.lbSequencia.Size = new System.Drawing.Size(0, 21);
-            this.lbSequencia.TabIndex = 18;
+            this.lbInfixa.AutoSize = true;
+            this.lbInfixa.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbInfixa.Location = new System.Drawing.Point(17, 89);
+            this.lbInfixa.Name = "lbInfixa";
+            this.lbInfixa.Size = new System.Drawing.Size(60, 21);
+            this.lbInfixa.TabIndex = 18;
+            this.lbInfixa.Text = "Infixa: ";
             // 
             // btnRadiciacao
             // 
             this.btnRadiciacao.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRadiciacao.Location = new System.Drawing.Point(321, 250);
+            this.btnRadiciacao.Location = new System.Drawing.Point(321, 283);
             this.btnRadiciacao.Name = "btnRadiciacao";
             this.btnRadiciacao.Size = new System.Drawing.Size(69, 54);
             this.btnRadiciacao.TabIndex = 19;
@@ -277,7 +278,7 @@
             // btnLimpar
             // 
             this.btnLimpar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.Location = new System.Drawing.Point(171, 310);
+            this.btnLimpar.Location = new System.Drawing.Point(171, 343);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(69, 54);
             this.btnLimpar.TabIndex = 20;
@@ -288,7 +289,7 @@
             // btnIgual
             // 
             this.btnIgual.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIgual.Location = new System.Drawing.Point(21, 370);
+            this.btnIgual.Location = new System.Drawing.Point(21, 403);
             this.btnIgual.Name = "btnIgual";
             this.btnIgual.Size = new System.Drawing.Size(219, 54);
             this.btnIgual.TabIndex = 21;
@@ -299,7 +300,7 @@
             // btnAbreParenteses
             // 
             this.btnAbreParenteses.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbreParenteses.Location = new System.Drawing.Point(246, 310);
+            this.btnAbreParenteses.Location = new System.Drawing.Point(246, 343);
             this.btnAbreParenteses.Name = "btnAbreParenteses";
             this.btnAbreParenteses.Size = new System.Drawing.Size(69, 54);
             this.btnAbreParenteses.TabIndex = 22;
@@ -310,7 +311,7 @@
             // btnFechaParenteses
             // 
             this.btnFechaParenteses.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFechaParenteses.Location = new System.Drawing.Point(321, 310);
+            this.btnFechaParenteses.Location = new System.Drawing.Point(321, 343);
             this.btnFechaParenteses.Name = "btnFechaParenteses";
             this.btnFechaParenteses.Size = new System.Drawing.Size(69, 54);
             this.btnFechaParenteses.TabIndex = 23;
@@ -318,19 +319,20 @@
             this.btnFechaParenteses.UseVisualStyleBackColor = true;
             this.btnFechaParenteses.Click += new System.EventHandler(this.btn5_Click);
             // 
-            // lbSequencia2
+            // lbPosfixa
             // 
-            this.lbSequencia2.AutoSize = true;
-            this.lbSequencia2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSequencia2.Location = new System.Drawing.Point(279, 89);
-            this.lbSequencia2.Name = "lbSequencia2";
-            this.lbSequencia2.Size = new System.Drawing.Size(0, 21);
-            this.lbSequencia2.TabIndex = 24;
+            this.lbPosfixa.AutoSize = true;
+            this.lbPosfixa.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPosfixa.Location = new System.Drawing.Point(17, 121);
+            this.lbPosfixa.Name = "lbPosfixa";
+            this.lbPosfixa.Size = new System.Drawing.Size(70, 21);
+            this.lbPosfixa.TabIndex = 24;
+            this.lbPosfixa.Text = "Posfixa: ";
             // 
             // btnApagarCaracter
             // 
             this.btnApagarCaracter.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnApagarCaracter.Location = new System.Drawing.Point(246, 370);
+            this.btnApagarCaracter.Location = new System.Drawing.Point(246, 403);
             this.btnApagarCaracter.Name = "btnApagarCaracter";
             this.btnApagarCaracter.Size = new System.Drawing.Size(144, 54);
             this.btnApagarCaracter.TabIndex = 25;
@@ -342,15 +344,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(411, 437);
+            this.ClientSize = new System.Drawing.Size(411, 469);
             this.Controls.Add(this.btnApagarCaracter);
-            this.Controls.Add(this.lbSequencia2);
+            this.Controls.Add(this.lbPosfixa);
             this.Controls.Add(this.btnFechaParenteses);
             this.Controls.Add(this.btnAbreParenteses);
             this.Controls.Add(this.btnIgual);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnRadiciacao);
-            this.Controls.Add(this.lbSequencia);
+            this.Controls.Add(this.lbInfixa);
             this.Controls.Add(this.txtResultado);
             this.Controls.Add(this.btnDivisao);
             this.Controls.Add(this.btnMultiplicacao);
@@ -398,13 +400,13 @@
         private System.Windows.Forms.Button btnSubtracao;
         private System.Windows.Forms.Button btnAdicao;
         private System.Windows.Forms.TextBox txtResultado;
-        private System.Windows.Forms.Label lbSequencia;
+        private System.Windows.Forms.Label lbInfixa;
         private System.Windows.Forms.Button btnRadiciacao;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnIgual;
         private System.Windows.Forms.Button btnAbreParenteses;
         private System.Windows.Forms.Button btnFechaParenteses;
-        private System.Windows.Forms.Label lbSequencia2;
+        private System.Windows.Forms.Label lbPosfixa;
         private System.Windows.Forms.Button btnApagarCaracter;
     }
 }

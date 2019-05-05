@@ -12,8 +12,6 @@ namespace apCalculadora
 {
     public partial class frmCalculadora : Form
     {
-        Operacao operacao;
-
         public frmCalculadora()
         {
             InitializeComponent();
@@ -21,16 +19,15 @@ namespace apCalculadora
 
         private void frmCalculadora_Load(object sender, EventArgs e)
         {
-            operacao = new Operacao();
+
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             txtVisor.Clear();
-            lbSequencia.Text = "";
-            lbSequencia2.Text = "";
+            lbInfixa.Text = "Infixa: ";
+            lbPosfixa.Text = "Posfixa: ";
             txtResultado.Text = "0";
-            operacao.Resetar();
         }
 
         private void btn5_Click(object sender, EventArgs e)
@@ -38,7 +35,7 @@ namespace apCalculadora
             Button qualBotao = (Button)sender;
             if (!txtVisor.Text.Equals(""))
             {
-                if (!operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1] + ""))
+                if (!Operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1] + ""))
                     txtVisor.Text += qualBotao.Text;
                 else
                 {
@@ -64,13 +61,14 @@ namespace apCalculadora
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            if (txtResultado.Text != "0")
-                operacao.Resetar();
-            string seqIn = "";
-            string seqPos = "";
-            txtResultado.Text = operacao.Resultar(txtVisor.Text, ref seqIn, ref seqPos);
-            lbSequencia.Text = seqIn + "";
-            lbSequencia2.Text = seqPos + "";
+            Operacao operacao = null;
+            if (txtVisor.Text != null)
+            {
+                operacao = new Operacao(txtVisor.Text);
+                txtResultado.Text = operacao.CalcularExpressao() + "";
+                lbInfixa.Text = "Infixa: " + operacao.SequenciaInfixa;
+                lbPosfixa.Text = "Posfixa: " + operacao.SequenciaPosfixa;
+            }
         }
 
         private void btnApagarCaracter_Click(object sender, EventArgs e)
