@@ -121,7 +121,7 @@ namespace apCalculadora
 
         private void btnPonto_Click(object sender, EventArgs e)
         {
-            //if (txtVisor.Text.Length != 0 || !operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1]))
+            //çif (txtVisor.Text.Length != 0 || !operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1]))
         }
     }
 }

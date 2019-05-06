@@ -102,6 +102,7 @@ namespace apCalculadora
                 }
             }
         }
+
         private double CalcularResultado()
         {
             PilhaHerdaLista<double> valores = new PilhaHerdaLista<double>();
