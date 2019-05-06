@@ -12,6 +12,7 @@ namespace apCalculadora
 {
     public partial class frmCalculadora : Form
     {
+        int ponto = 0;
         public frmCalculadora()
         {
             InitializeComponent();
@@ -35,8 +36,21 @@ namespace apCalculadora
             Button qualBotao = (Button)sender;
             if (!txtVisor.Text.Equals(""))
             {
+                //if (qualBotao.Text  == ")")
+                //{
+                //    int abre = 0, fecha = 0;
+                //    while (txtVisor.Text.IndexOf("(") != -1)
+                //        abre++;
+                //    while (txtVisor.Text.IndexOf(")") != -1)
+                //        fecha++;
+                //    txtVisor.Text += qualBotao.Text;
+                //}
+
                 if (!Operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1] + ""))
+                {
                     txtVisor.Text += qualBotao.Text;
+                    ponto = 0;
+                }
                 else
                 {
 
@@ -48,8 +62,9 @@ namespace apCalculadora
                         if (qualBotao.Text == "(")
                             txtVisor.Text += qualBotao.Text;
                     }
-                    if (txtVisor.Text[txtVisor.Text.Length - 1] + "" == ")")
-                        txtVisor.Text += qualBotao.Text;
+                   
+                       
+
                 }
                 
 
@@ -121,7 +136,17 @@ namespace apCalculadora
 
         private void btnPonto_Click(object sender, EventArgs e)
         {
-            //çif (txtVisor.Text.Length != 0 || !operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1]))
+            if (txtVisor.Text.Length != 0 && 
+                (!Operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1] + "")&& 
+                txtVisor.Text[txtVisor.Text.Length - 1] != '.'))
+            {
+                if (ponto == 0)
+                {
+                    txtVisor.Text += ".";
+                    ponto++;
+                }
+            }
+
         }
     }
 }
