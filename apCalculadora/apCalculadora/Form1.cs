@@ -38,10 +38,15 @@ namespace apCalculadora
                 Operacao operacao = null;
                 if (txtVisor.Text != null)
                 {
-                    operacao = new Operacao(txtVisor.Text);
-                    txtResultado.Text = operacao.CalcularExpressao() + "";
-                    lbInfixa.Text = "Infixa: " + operacao.SequenciaInfixa;
-                    lbPosfixa.Text = "Posfixa: " + operacao.SequenciaPosfixa;
+                    if (EstaBalanceada(txtVisor.Text))
+                    {
+                        operacao = new Operacao(txtVisor.Text);
+                        txtResultado.Text = operacao.CalcularExpressao() + "";
+                        lbInfixa.Text = "Infixa: " + operacao.SequenciaInfixa;
+                        lbPosfixa.Text = "Posfixa: " + operacao.SequenciaPosfixa;
+                    }
+                    else
+                        MessageBox.Show("A expressão está incorreta");
                 }
             }
             catch (DivideByZeroException)
@@ -56,7 +61,8 @@ namespace apCalculadora
 
         private void btnApagarCaracter_Click(object sender, EventArgs e)
         {
-            txtVisor.Text = txtVisor.Text.Remove(txtVisor.Text.Length - 1);
+            if(!string.IsNullOrEmpty(txtVisor.Text))
+                txtVisor.Text = txtVisor.Text.Remove(txtVisor.Text.Length - 1);
         }
 
         private void txtVisor_KeyDown(object sender, KeyEventArgs e)
@@ -168,6 +174,43 @@ namespace apCalculadora
                 txtVisor.Text += ((Button)sender).Text;
                 jaTemVirgula = false;
             }
+        }
+        public static bool EstaBalanceada(String entrada)
+        {
+            // construtor com tamanho default; topo valerá -1
+            PilhaHerdaLista<char> p = new PilhaHerdaLista<char>();
+            bool balanceada = true;
+            int indice = 0;
+            char simbolo;
+            char caracterAbertura;
+            for (indice = 0; balanceada && indice < entrada.Length; indice++)
+            {
+                simbolo = entrada[indice];
+                if (simbolo == '{' || simbolo == '[' || simbolo == '(')
+                {
+                    p.Empilhar(simbolo); // chamada causa overhead
+                }
+                else
+                if (simbolo == '}' || simbolo == ']' || simbolo == ')')
+                    if (p.EstaVazia())
+                        balanceada = false; // pois a pilha já esvaziou
+                    else
+                    {
+                        caracterAbertura = p.Desempilhar();
+                        if (!Combinam(simbolo, caracterAbertura))
+                            balanceada = false;
+                    }
+            }
+            if (!p.EstaVazia())
+                balanceada = false;
+            return balanceada;
+        }
+
+        public static bool Combinam(char fecha, char abre)
+        {
+            return ((fecha == ']' && abre == '[') ||
+                    (fecha == ')' && abre == '(') ||
+                    (fecha == '}' && abre == '{'));
         }
     }
 }
