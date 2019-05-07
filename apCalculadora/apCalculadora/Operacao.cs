@@ -17,7 +17,7 @@ namespace apCalculadora
         PilhaHerdaLista<string> operadores;
         double resultado;
 
-        public string Expressao { get => expressao;}
+        public string Expressao { get => expressao; }
         public string SequenciaPosfixa { get => sequenciaPosfixa; }
         public string SequenciaInfixa { get => sequenciaInfixa; }
         public double Resultado { get => resultado; }
@@ -55,15 +55,23 @@ namespace apCalculadora
                         elemento = "@";
                     else
                         elemento = expressao[i] + "";
-
+                    elemento = expressao[i] + "";
                     while (!operadores.EstaVazia() && TemPrecedencia(operadores.OTopo()[0], elemento[0]))
                     {
-                        string op = operadores.Desempilhar();
-                        if (op != "(" && op != ")")
-                            posfixa.Enfileirar(op);
+                        char op = operadores.OTopo()[0];
+                        if (op == '(')
+                            break;
+                        else
+                        {
+                            posfixa.Enfileirar(op + "");
+                            operadores.Desempilhar();
+                        }
                     }
-                    if(elemento!=")")
+
+                    if (elemento != ")")
                         operadores.Empilhar(elemento);
+                    else
+                        operadores.Desempilhar();
                 }
                 if (elemento != "(" && elemento != ")")
                     infixa.Enfileirar(elemento);
@@ -91,7 +99,7 @@ namespace apCalculadora
                     if (vet[i] == "@")
                         seq += "-";
                     else
-                    seq += vet[i];
+                        seq += vet[i];
                 }
                 else
                     seq += letra++;
@@ -192,7 +200,7 @@ namespace apCalculadora
                     break;
                 case '#':
                 case '@':
-                    if(operacao != 'V')
+                    if (operacao != 'V')
                         return true; break;
 
             }
