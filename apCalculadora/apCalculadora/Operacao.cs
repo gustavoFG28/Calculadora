@@ -186,6 +186,10 @@ namespace apCalculadora
                     if (operacao == '+' || operacao == '-' || operacao == '*' || operacao == '/' || operacao == ')')
                         return true; break;
 
+                case '(':
+                    if (operacao == ')')
+                        return true;
+                    break;
                 case '#':
                 case '@':
                     if(operacao != 'V')
