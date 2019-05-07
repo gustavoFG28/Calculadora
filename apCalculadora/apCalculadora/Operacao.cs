@@ -62,8 +62,8 @@ namespace apCalculadora
                         if (op != "(" && op != ")")
                             posfixa.Enfileirar(op);
                     }
-                    if(elemento!=")" && elemento!="(")
-                    operadores.Empilhar(elemento);
+                    if(elemento!=")")
+                        operadores.Empilhar(elemento);
                 }
                 if (elemento != "(" && elemento != ")")
                     infixa.Enfileirar(elemento);

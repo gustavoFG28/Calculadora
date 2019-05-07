@@ -61,7 +61,6 @@
             this.txtVisor.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVisor.Location = new System.Drawing.Point(21, 9);
             this.txtVisor.Name = "txtVisor";
-            this.txtVisor.ReadOnly = true;
             this.txtVisor.Size = new System.Drawing.Size(369, 31);
             this.txtVisor.TabIndex = 0;
             this.txtVisor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
