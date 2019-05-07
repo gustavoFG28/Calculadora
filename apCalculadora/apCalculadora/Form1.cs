@@ -36,7 +36,7 @@ namespace apCalculadora
             try
             {
                 Operacao operacao = null;
-                if (txtVisor.Text != null)
+                if (!string.IsNullOrEmpty(txtVisor.Text) && TemNumero())
                 {
                     if (EstaBalanceada(txtVisor.Text))
                     {
@@ -61,8 +61,13 @@ namespace apCalculadora
 
         private void btnApagarCaracter_Click(object sender, EventArgs e)
         {
-            if(!string.IsNullOrEmpty(txtVisor.Text))
-                txtVisor.Text = txtVisor.Text.Remove(txtVisor.Text.Length - 1);
+            if (!string.IsNullOrEmpty(txtVisor.Text))
+            {
+                if(txtVisor.Text.Length >= 2 && txtVisor.Text[txtVisor.Text.Length - 1] == '(' && txtVisor.Text[txtVisor.Text.Length - 2] == 'V')
+                    txtVisor.Text = txtVisor.Text.Remove(txtVisor.Text.Length - 2);
+                else
+                    txtVisor.Text = txtVisor.Text.Remove(txtVisor.Text.Length - 1);
+            }
         }
 
         private void txtVisor_KeyDown(object sender, KeyEventArgs e)
@@ -97,7 +102,13 @@ namespace apCalculadora
                 case Keys.Add: btnAdicao.PerformClick(); break;
                 case Keys.Subtract: btnSubtracao.PerformClick(); break;
                 case Keys.Enter: btnIgual.PerformClick(); break;
-
+                case Keys.Divide: btnDivisao.PerformClick(); break;
+                case Keys.Multiply: btnMultiplicacao.PerformClick(); break;
+                case Keys.Oemtilde: btnPotenciacao.PerformClick(); break;
+                case Keys.V: btnRadiciacao.PerformClick(); break;
+                case Keys.OemPeriod: btnPonto.PerformClick(); break;
+                case Keys.OemOpenBrackets: btnAbreParenteses.PerformClick(); break;
+                case Keys.OemCloseBrackets: btnFechaParenteses.PerformClick(); break;
             }
             txtVisor.Select(txtVisor.Text.Length, 0);
         }
@@ -153,7 +164,7 @@ namespace apCalculadora
         {
             if (string.IsNullOrEmpty(txtVisor.Text) || (Operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1].ToString()) && txtVisor.Text[txtVisor.Text.Length - 1] != ')'))
             {
-                txtVisor.Text += ((Button)sender).Text;
+                txtVisor.Text += ((Button)sender).Text + "(";
                 jaTemVirgula = false;
             }
         }
@@ -211,6 +222,14 @@ namespace apCalculadora
             return ((fecha == ']' && abre == '[') ||
                     (fecha == ')' && abre == '(') ||
                     (fecha == '}' && abre == '{'));
+        }
+
+        private bool TemNumero()
+        {
+            foreach (char possivelNumero in txtVisor.Text)
+                if (!Operacao.EhOperador(possivelNumero + ""))
+                    return true;
+            return false;
         }
     }
 }

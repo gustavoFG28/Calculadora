@@ -61,6 +61,7 @@
             this.txtVisor.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVisor.Location = new System.Drawing.Point(21, 9);
             this.txtVisor.Name = "txtVisor";
+            this.txtVisor.ReadOnly = true;
             this.txtVisor.Size = new System.Drawing.Size(369, 31);
             this.txtVisor.TabIndex = 0;
             this.txtVisor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -76,6 +77,7 @@
             this.btn7.Text = "7";
             this.btn7.UseVisualStyleBackColor = true;
             this.btn7.Click += new System.EventHandler(this.btnNumeros_Click);
+            this.btn7.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btn4
             // 
@@ -87,6 +89,7 @@
             this.btn4.Text = "4";
             this.btn4.UseVisualStyleBackColor = true;
             this.btn4.Click += new System.EventHandler(this.btnNumeros_Click);
+            this.btn4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btn1
             // 
@@ -98,6 +101,7 @@
             this.btn1.Text = "1";
             this.btn1.UseVisualStyleBackColor = true;
             this.btn1.Click += new System.EventHandler(this.btnNumeros_Click);
+            this.btn1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btn0
             // 
@@ -109,6 +113,7 @@
             this.btn0.Text = "0";
             this.btn0.UseVisualStyleBackColor = true;
             this.btn0.Click += new System.EventHandler(this.btnNumeros_Click);
+            this.btn0.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btn8
             // 
@@ -120,6 +125,7 @@
             this.btn8.Text = "8";
             this.btn8.UseVisualStyleBackColor = true;
             this.btn8.Click += new System.EventHandler(this.btnNumeros_Click);
+            this.btn8.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btnPonto
             // 
@@ -131,6 +137,7 @@
             this.btnPonto.Text = ".";
             this.btnPonto.UseVisualStyleBackColor = true;
             this.btnPonto.Click += new System.EventHandler(this.btnPonto_Click);
+            this.btnPonto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btn2
             // 
@@ -142,6 +149,7 @@
             this.btn2.Text = "2";
             this.btn2.UseVisualStyleBackColor = true;
             this.btn2.Click += new System.EventHandler(this.btnNumeros_Click);
+            this.btn2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btn5
             // 
@@ -153,6 +161,7 @@
             this.btn5.Text = "5";
             this.btn5.UseVisualStyleBackColor = true;
             this.btn5.Click += new System.EventHandler(this.btnNumeros_Click);
+            this.btn5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btnPotenciacao
             // 
@@ -164,6 +173,7 @@
             this.btnPotenciacao.Text = "^";
             this.btnPotenciacao.UseVisualStyleBackColor = true;
             this.btnPotenciacao.Click += new System.EventHandler(this.btnPotencia_Click);
+            this.btnPotenciacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btn3
             // 
@@ -175,6 +185,7 @@
             this.btn3.Text = "3";
             this.btn3.UseVisualStyleBackColor = true;
             this.btn3.Click += new System.EventHandler(this.btnNumeros_Click);
+            this.btn3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btn6
             // 
@@ -186,6 +197,7 @@
             this.btn6.Text = "6";
             this.btn6.UseVisualStyleBackColor = true;
             this.btn6.Click += new System.EventHandler(this.btnNumeros_Click);
+            this.btn6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btn9
             // 
@@ -197,6 +209,7 @@
             this.btn9.Text = "9";
             this.btn9.UseVisualStyleBackColor = true;
             this.btn9.Click += new System.EventHandler(this.btnNumeros_Click);
+            this.btn9.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btnDivisao
             // 
@@ -208,6 +221,7 @@
             this.btnDivisao.Text = "/";
             this.btnDivisao.UseVisualStyleBackColor = true;
             this.btnDivisao.Click += new System.EventHandler(this.btnMultiplicacaoDivisao_Click);
+            this.btnDivisao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btnMultiplicacao
             // 
@@ -219,6 +233,7 @@
             this.btnMultiplicacao.Text = "*";
             this.btnMultiplicacao.UseVisualStyleBackColor = true;
             this.btnMultiplicacao.Click += new System.EventHandler(this.btnMultiplicacaoDivisao_Click);
+            this.btnMultiplicacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btnSubtracao
             // 
@@ -230,6 +245,7 @@
             this.btnSubtracao.Text = "-";
             this.btnSubtracao.UseVisualStyleBackColor = true;
             this.btnSubtracao.Click += new System.EventHandler(this.btnAdicaoSubtracao_Click);
+            this.btnSubtracao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btnAdicao
             // 
@@ -241,6 +257,7 @@
             this.btnAdicao.Text = "+";
             this.btnAdicao.UseVisualStyleBackColor = true;
             this.btnAdicao.Click += new System.EventHandler(this.btnAdicaoSubtracao_Click);
+            this.btnAdicao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // txtResultado
             // 
@@ -252,6 +269,7 @@
             this.txtResultado.TabIndex = 17;
             this.txtResultado.Text = "0";
             this.txtResultado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtResultado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // lbInfixa
             // 
@@ -273,6 +291,7 @@
             this.btnRadiciacao.Text = "V";
             this.btnRadiciacao.UseVisualStyleBackColor = true;
             this.btnRadiciacao.Click += new System.EventHandler(this.btnRadiciacao_Click);
+            this.btnRadiciacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btnLimpar
             // 
@@ -284,6 +303,7 @@
             this.btnLimpar.Text = "C";
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            this.btnLimpar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btnIgual
             // 
@@ -295,6 +315,7 @@
             this.btnIgual.Text = "=";
             this.btnIgual.UseVisualStyleBackColor = true;
             this.btnIgual.Click += new System.EventHandler(this.btnIgual_Click);
+            this.btnIgual.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btnAbreParenteses
             // 
@@ -306,6 +327,7 @@
             this.btnAbreParenteses.Text = "(";
             this.btnAbreParenteses.UseVisualStyleBackColor = true;
             this.btnAbreParenteses.Click += new System.EventHandler(this.btnAbreParenteses_Click);
+            this.btnAbreParenteses.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // btnFechaParenteses
             // 
@@ -317,6 +339,7 @@
             this.btnFechaParenteses.Text = ")";
             this.btnFechaParenteses.UseVisualStyleBackColor = true;
             this.btnFechaParenteses.Click += new System.EventHandler(this.btnFechaParenteses_Click);
+            this.btnFechaParenteses.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // lbPosfixa
             // 
@@ -338,6 +361,7 @@
             this.btnApagarCaracter.Text = "CE";
             this.btnApagarCaracter.UseVisualStyleBackColor = true;
             this.btnApagarCaracter.Click += new System.EventHandler(this.btnApagarCaracter_Click);
+            this.btnApagarCaracter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVisor_KeyDown);
             // 
             // frmCalculadora
             // 
