@@ -48,6 +48,9 @@ namespace apCalculadora
                 }
                 else
                 {
+                    if (expressao[i] == '+' && (i == 0 || expressao[i - 1] == '('))
+                        elemento = "#";
+                    else
                     if (expressao[i] == '-' && (i == 0 || expressao[i - 1] == '('))
                         elemento = "@";
                     else
@@ -59,9 +62,11 @@ namespace apCalculadora
                         if (op != "(" && op != ")")
                             posfixa.Enfileirar(op);
                     }
+                    if(elemento!=")" && elemento!="(")
                     operadores.Empilhar(elemento);
                 }
-                infixa.Enfileirar(elemento);
+                if (elemento != "(" && elemento != ")")
+                    infixa.Enfileirar(elemento);
             }
 
             TratarPilhaOperadores();
@@ -80,6 +85,9 @@ namespace apCalculadora
             {
                 if (EhOperador(vet[i]))
                 {
+                    if (vet[i] == "#")
+                        seq += "+";
+                    else
                     if (vet[i] == "@")
                         seq += "-";
                     else
@@ -116,7 +124,7 @@ namespace apCalculadora
                 else
                 {
                     v1 = valores.Desempilhar();
-                    if (vet[c] != "V" && vet[c] != "@")
+                    if (vet[c] != "V" && vet[c] != "@" && vet[c] != "#")
                         v2 = valores.Desempilhar();
 
                     switch (vet[c])
@@ -124,10 +132,17 @@ namespace apCalculadora
                         case "+": result = v2 + v1; break;
                         case "-": result = v2 - v1; break;
                         case "*": result = v2 * v1; break;
-                        case "/": result = v2 / v1; break;
+                        case "/":
+                            if (v1 == 0)
+                                throw new DivideByZeroException("Divisão por 0");
+                            result = v2 / v1; break;
                         case "^": result = Math.Pow(v2, v1); break;
-                        case "V": result = Math.Sqrt(v1); break;
+                        case "V":
+                            if (v1 < 0)
+                                throw new NotFiniteNumberException("Raiz negativa");
+                            result = Math.Sqrt(v1); break;
                         case "@": result = -v1; break;
+                        case "#": result = v1; break;
                     }
                     valores.Empilhar(result);
                 }
@@ -141,6 +156,7 @@ namespace apCalculadora
             switch (qual)
             {
                 case "+":
+                case "#":
                 case "@":
                 case "-":
                 case "*":
@@ -169,10 +185,11 @@ namespace apCalculadora
                 case 'V':
                     if (operacao == '+' || operacao == '-' || operacao == '*' || operacao == '/' || operacao == ')')
                         return true; break;
-                case '(':
-                    if (operacao == ')')
+
+                case '#':
+                case '@':
+                    if(operacao != 'V')
                         return true; break;
-                case '@': return true; break;
 
             }
             return false;

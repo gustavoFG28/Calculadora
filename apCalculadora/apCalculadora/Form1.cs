@@ -12,7 +12,7 @@ namespace apCalculadora
 {
     public partial class frmCalculadora : Form
     {
-        int ponto = 0;
+        bool jaTemVirgula;
         public frmCalculadora()
         {
             InitializeComponent();
@@ -20,7 +20,7 @@ namespace apCalculadora
 
         private void frmCalculadora_Load(object sender, EventArgs e)
         {
-
+            jaTemVirgula = false;
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -31,58 +31,26 @@ namespace apCalculadora
             txtResultado.Text = "0";
         }
 
-        private void btn5_Click(object sender, EventArgs e)
-        {
-            Button qualBotao = (Button)sender;
-            if (!txtVisor.Text.Equals(""))
-            {
-                //if (qualBotao.Text  == ")")
-                //{
-                //    int abre = 0, fecha = 0;
-                //    while (txtVisor.Text.IndexOf("(") != -1)
-                //        abre++;
-                //    while (txtVisor.Text.IndexOf(")") != -1)
-                //        fecha++;
-                //    txtVisor.Text += qualBotao.Text;
-                //}
-
-                if (!Operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1] + ""))
-                {
-                    txtVisor.Text += qualBotao.Text;
-                    ponto = 0;
-                }
-                else
-                {
-
-                    if (txtVisor.Text[txtVisor.Text.Length - 1] + "" == "*" ||
-                        txtVisor.Text[txtVisor.Text.Length - 1] + "" == "/" ||
-                        txtVisor.Text[txtVisor.Text.Length - 1] + "" == "^" ||
-                        txtVisor.Text[txtVisor.Text.Length - 1] + "" == "V")
-                    {
-                        if (qualBotao.Text == "(")
-                            txtVisor.Text += qualBotao.Text;
-                    }
-                   
-                       
-
-                }
-                
-
-            }
-            else
-                txtVisor.Text += qualBotao.Text;
-
-        }
-
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            Operacao operacao = null;
-            if (txtVisor.Text != null)
+            try
             {
-                operacao = new Operacao(txtVisor.Text);
-                txtResultado.Text = operacao.CalcularExpressao() + "";
-                lbInfixa.Text = "Infixa: " + operacao.SequenciaInfixa;
-                lbPosfixa.Text = "Posfixa: " + operacao.SequenciaPosfixa;
+                Operacao operacao = null;
+                if (txtVisor.Text != null)
+                {
+                    operacao = new Operacao(txtVisor.Text);
+                    txtResultado.Text = operacao.CalcularExpressao() + "";
+                    lbInfixa.Text = "Infixa: " + operacao.SequenciaInfixa;
+                    lbPosfixa.Text = "Posfixa: " + operacao.SequenciaPosfixa;
+                }
+            }
+            catch (DivideByZeroException)
+            {
+                MessageBox.Show("Impossível calcular", "Divisão por 0", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (NotFiniteNumberException)
+            {
+                MessageBox.Show("Impossível calcular", "Raiz negativa", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -116,13 +84,13 @@ namespace apCalculadora
                 case Keys.D9:
                 case Keys.NumPad9: btn9.PerformClick(); break;
                 case Keys.Back:
-                    if(!txtVisor.Text.Equals(""))
-                    btnApagarCaracter.PerformClick(); break;
+                    if (!txtVisor.Text.Equals(""))
+                        btnApagarCaracter.PerformClick(); break;
 
                 case Keys.Delete: btnLimpar.PerformClick(); break;
                 case Keys.Add: btnAdicao.PerformClick(); break;
                 case Keys.Subtract: btnSubtracao.PerformClick(); break;
-
+                case Keys.Enter: btnIgual.PerformClick(); break;
 
             }
             txtVisor.Select(txtVisor.Text.Length, 0);
@@ -136,17 +104,70 @@ namespace apCalculadora
 
         private void btnPonto_Click(object sender, EventArgs e)
         {
-            if (txtVisor.Text.Length != 0 && 
-                (!Operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1] + "")&& 
-                txtVisor.Text[txtVisor.Text.Length - 1] != '.'))
+            if (txtVisor.Text != "" && !jaTemVirgula && txtVisor.Text[txtVisor.Text.Length - 1] != '.' && !Operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1] + ""))
             {
-                if (ponto == 0)
-                {
-                    txtVisor.Text += ".";
-                    ponto++;
-                }
+                txtVisor.Text += ".";
+                jaTemVirgula = true;
             }
+        }
+        private void btnNumeros_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtVisor.Text) || txtVisor.Text[txtVisor.Text.Length - 1] != ')')
+                txtVisor.Text += ((Button)sender).Text;
+        }
 
+        private void btnAdicaoSubtracao_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtVisor.Text) || (txtVisor.Text[txtVisor.Text.Length - 1] == 'V' || txtVisor.Text[txtVisor.Text.Length - 1] == '(' || !Operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1].ToString()) && txtVisor.Text[txtVisor.Text.Length - 1] != '.'))
+            {
+                txtVisor.Text += ((Button)sender).Text;
+                jaTemVirgula = false;
+            }
+        }
+
+        private void btnMultiplicacaoDivisao_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtVisor.Text) && txtVisor.Text[txtVisor.Text.Length - 1] != '(' && (!Operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1].ToString()) || txtVisor.Text[txtVisor.Text.Length - 1] == ')') && txtVisor.Text[txtVisor.Text.Length - 1] != '.')
+            {
+                txtVisor.Text += ((Button)sender).Text;
+                jaTemVirgula = false;
+            }
+        }
+
+        private void btnPotencia_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtVisor.Text) && txtVisor.Text[txtVisor.Text.Length - 1] != '.' && (txtVisor.Text[txtVisor.Text.Length - 1] == ')' || !Operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1].ToString())))
+            {
+                txtVisor.Text += ((Button)sender).Text;
+                jaTemVirgula = false;
+            }
+        }
+
+        private void btnRadiciacao_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtVisor.Text) || (Operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1].ToString()) && txtVisor.Text[txtVisor.Text.Length - 1] != ')'))
+            {
+                txtVisor.Text += ((Button)sender).Text;
+                jaTemVirgula = false;
+            }
+        }
+
+        private void btnAbreParenteses_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtVisor.Text) || (txtVisor.Text[txtVisor.Text.Length - 1] != ')' && Operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1].ToString()) && txtVisor.Text[txtVisor.Text.Length - 1] != '.'))
+            {
+                txtVisor.Text += ((Button)sender).Text;
+                jaTemVirgula = false;
+            }
+        }
+
+        private void btnFechaParenteses_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtVisor.Text) && txtVisor.Text[txtVisor.Text.Length - 1] != '.' && (txtVisor.Text[txtVisor.Text.Length - 1] == ')' || !Operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1] + "")))
+            {
+                txtVisor.Text += ((Button)sender).Text;
+                jaTemVirgula = false;
+            }
         }
     }
 }
