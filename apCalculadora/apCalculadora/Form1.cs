@@ -36,7 +36,7 @@ namespace apCalculadora
             try
             {
                 Operacao operacao = null;
-                if (!string.IsNullOrEmpty(txtVisor.Text) && TemNumero())
+                if (!string.IsNullOrEmpty(txtVisor.Text) && TemNumero() && (txtVisor.Text[txtVisor.Text.Length - 1] == ')' || !Operacao.EhOperador(txtVisor.Text[txtVisor.Text.Length - 1].ToString())))
                 {
                     if (EstaBalanceada(txtVisor.Text))
                     {
@@ -46,7 +46,7 @@ namespace apCalculadora
                         lbPosfixa.Text = "Posfixa: " + operacao.SequenciaPosfixa;
                     }
                     else
-                        MessageBox.Show("A expressão está incorreta");
+                        MessageBox.Show("A expressão está incorreta", "Erro ao calcular", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (DivideByZeroException)

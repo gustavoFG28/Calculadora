@@ -55,7 +55,6 @@ namespace apCalculadora
                         elemento = "@";
                     else
                         elemento = expressao[i] + "";
-                    elemento = expressao[i] + "";
                     while (!operadores.EstaVazia() && TemPrecedencia(operadores.OTopo()[0], elemento[0]))
                     {
                         char op = operadores.OTopo()[0];
